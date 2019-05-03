@@ -1,65 +1,87 @@
-exports.run = async (client, msg, args) => {
-    let ask=[
-      "Aşkölçer %3 Gösteriyor.",
-      "Aşkölçer %6 Gösteriyor.",
-      "Aşkölçer %9 Gösteriyor.",
-      "Aşkölçer %12 Gösteriyor.",
-      "Aşkölçer %18 Gösteriyor.",
-      "Aşkölçer %20 Gösteriyor.",
-      "Aşkölçer %23 Gösteriyor.",
-      "Aşkölçer %26 Gösteriyor.",
-      "Aşkölçer %29 Gösteriyor.",
-      "Aşkölçer %30 Gösteriyor.",
-      "Aşkölçer %40 Gösteriyor.",
-      "Aşkölçer %50 Gösteriyor.",
-      "Aşkölçer %60 Gösteriyor.",
-      "Aşkölçer %70 Gösteriyor.",
-      "Aşkölçer %73 Gösteriyor.",
-      "Aşkölçer %76 Gösteriyor.",
-      "Aşkölçer %79 Gösteriyor.",
-      "Aşkölçer %82 Gösteriyor.",
-      "Aşkölçer %85 Gösteriyor.",
-      "Aşkölçer %88 Gösteriyor.",
-      "Aşkölçer %90 Gösteriyor.",
-      "Aşkölçer %91 Gösteriyor.",
-      "Aşkölçer %92 Gösteriyor.",
-      "Aşkölçer %93 Gösteriyor.",
-      "Aşkölçer %94 Gösteriyor.",
-      "Aşkölçer %95 Gösteriyor.",
-      "Aşkölçer %96 Gösteriyor.",
-      "Aşkölçer %97 Gösteriyor.",
-      "Aşkölçer %98 Gösteriyor.",
-      "Aşkölçer %99 Gösteriyor.",
-      "Aşkölçer %100 Gösteriyor.",
-    ]
-      let member = msg.mentions.members.first()
-     if(!member)return msg.channel.send({embed: {
-   color: Math.floor(Math.random() * (0xFFFFFF + 1)),
-   description: (':no_entry_sign: Kimi Sevdiğini etiketlemelisin!')
-  }});
- 
- 
- 
-    else{
-    msg.channel.send({embed: {
-   color: Math.floor(Math.random() * (0xFFFFFF + 1)),
-   description: (`${member} ${ask[Math.floor(Math.random() * 30)]}.`)
-    }})
+const Discord = require('discord.js')
+exports.run = async (client, message, args) => {
+    let member = message.guild.member(message.mentions.users.array()[0] || message.guild.members.get(args[0]))
+    let member2 = message.guild.member(message.mentions.users.array()[1] || message.guild.members.get(args[1]))
+    var s = message.author
+    if(member2) {
+        var s = member2.user
     }
- 
- 
-  }
- 
-  exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: [],
-    permLevel: 0
-   };
- 
-  exports.help = {
-    name: 'aşkölçer',
-    description: 'Aşk Ölçmeni sağlar.',
-    usage: 'aşkölçer'
-   }
+    if(!member) {
+        const embed = new Discord.RichEmbed()
+            .setDescription(`Bir Kişi Etiketlemelisin.`)
+    .setAuthor('Hata', 'https://cdn.discordapp.com/emojis/534964783833808906.gif')
+            .setColor("#FF0000")
+            .setFooter(message.author.tag + ' tarafından istendi!', message.author.avatarURL) 
+        message.channel.send({embed})
+        return
+    }
+    var anasonuc = Math.floor(Math.random() * 101)
+    var kalp = ''
+    var akalp = ''
+    if(Math.floor(Math.round(anasonuc / 10) * 10) >= 10) {
+        var c = 0
+        for(var i = 0; i < Math.floor(Math.round(anasonuc / 10)); i++) {
+            kalp += '❤️'
+            c++
+        }
+        for(var x = c; x < 10; x++) {
+            akalp += `🖤`
+        }
+    } else {
+        var kalp = '🖤'
+        var akalp = '🖤🖤🖤🖤🖤🖤🖤🖤🖤'
+    }
+    var yorum = `Birbiriniz için yaratılmışsınız!`
+    
+    if(anasonuc < 80) {
+      var yorum = 'Biraz daha sev... '
+      }
    
+    if(anasonuc < 70) {
+      var yorum = 'Oluyor sanırım.'
+      }
+  
+    if(anasonuc < 60) {
+      var yorum = 'Eh işte triplerle bir aşk...'
+      }
+ 
+    if(anasonuc < 50) {
+      var yorum = 'Belki bu aşk devam eder.'
+      }
+  
+    if(anasonuc < 40) {
+      var yorum = 'Azda olsa bir umut var...'
+      }
+  
+    if(anasonuc < 30) {
+      var yorum = 'Eh işte.'
+      }
+  
+    if(anasonuc < 20) {
+      var yorum = 'Maalesef birbirinize uymuyorsunuz.'
+      }
+  
+    if(anasonuc < 10) {
+      var yorum = 'Bence artık ayrılma vakti geldi.'
+      }
+      
+    const embed = new Discord.RichEmbed()
+        .setDescription(`<@${member.user.id}> & <@${s.id}>`)
+        .addField(`Aşk Çubuğu`, `${kalp}${akalp}`)
+        .addField(`Aşk Yüzdesi`, `%${anasonuc}`)
+        .addField(`Yorum`, `${yorum}`)
+        .setColor("7000d8")
+        
+    message.channel.send({embed})
+}
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ['aşkölçer', 'aşkölç', 'aşk'],
+    permLevel: 0
+}
+exports.help = {
+    name: 'aşkölçer',
+    description: 'İki Kullanıcı Arasındaki Aşkı Ölçer.',
+    usage: 'aşkölçer [@Kullanıcı]'
+}
