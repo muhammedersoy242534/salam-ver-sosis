@@ -17,6 +17,6 @@ var oyun = [
 
         var random = Math.floor(Math.random()*(oyun.length-0+1)+0);
 
-        client.user.setGame(oyun[random], "https://www.twitch.tv");
+        client.user.setActivity(oyun[random], "https://www.twitch.tv");
         }, 2 * 2500);
 }

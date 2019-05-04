@@ -299,7 +299,7 @@ exports.conf = {
 enabled: true,
 guildOnly: true,
 aliases: ['sunucukur'],
-permLevel: 4
+permLevel: 0
 };
 
 exports.help = {

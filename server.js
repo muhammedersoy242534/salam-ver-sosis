@@ -67,10 +67,10 @@ fs.unlink("./img/" + member.id + ".png");
 
 //////////////////////KÜFÜR ENGELLEME/////////////////////////
 
-client.on("message", msg => {
+client.on("message", async msg => {
 
 
-db.fetch(`kufur_${msg.guild.id}`).then(i => {
+let i = await db.fetch(`kufur_${msg.guild.id}`)
 if (i == 'acik') {
 const kufur = ["oç", "amk", "ananı sikiyim", "ananıskm", "piç", "amk", "amsk", "sikim", "sikiyim", "orospu çocuğu", "piç kurusu", "kahpe", "orospu", "mal", "sik", "yarrak", "am", "amcık", "amık", "yarram", "sikimi ye", "mk", "mq", "aq", "ak", "amq",];
 if (kufur.some(word => msg.content.includes(word))) {
@@ -88,7 +88,6 @@ console.log(err);
 else if (i == 'kapali') { 
 }
 if (!i) return;
-})
 });
 
 //////////////////SAYAÇ SİSTEMİ/////////////////////////
@@ -388,7 +387,7 @@ message.channel.send(`🆙 **| ${user.username} Tebrikler! Level atladın**`)
 fs.writeFile('./xp.json', JSON.stringify(points), (err) => {
 if (err) console.error(err)
 })
-
+let prefix = (ayarlar.prefix)
 if (message.content.toLowerCase() === prefix + 'level' || message.content.toLowerCase() === prefix + 'profil') {
 const level = new Discord.RichEmbed().setTitle(`${user.username}`).setDescription(`**Seviye:** ${userData.level}\n**EXP:** ${userData.points}`).setColor("RANDOM").setFooter(``).setThumbnail(user.avatarURL)
 message.channel.send(`📝 **| ${user.username} Adlı Kullanıcının Profili Burada!**`)
