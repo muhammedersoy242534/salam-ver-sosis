@@ -34,5 +34,5 @@ exports.conf = {
 exports.help = {
     name: 'kayıt-kanal-ayarla',
     description: 'Giriş Çıkış Kanalını Ayarlar.',
-    usage: 'kayit-kanal-ayarla #kanal '
+    usage: 'kayt-kanal-ayarla #kanal '
 }
