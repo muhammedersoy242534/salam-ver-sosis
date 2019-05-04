@@ -66,29 +66,21 @@ fs.unlink("./img/" + member.id + ".png");
 
 
 //////////////////////KÜFÜR ENGELLEME/////////////////////////
-
-client.on("message", async msg => {
-
-
-let i = await db.fetch(`kufur_${msg.guild.id}`)
-if (i == 'acik') {
-const kufur = ["oç", "amk", "ananı sikiyim", "ananıskm", "piç", "amk", "amsk", "sikim", "sikiyim", "orospu çocuğu", "piç kurusu", "kahpe", "orospu", "mal", "sik", "yarrak", "am", "amcık", "amık", "yarram", "sikimi ye", "mk", "mq", "aq", "ak", "amq",];
-if (kufur.some(word => msg.content.includes(word))) {
-try {
-if (!msg.member.hasPermission("BAN_MEMBERS")) {
-msg.delete();
-
-return msg.reply('Bu Sunucuda Küfür Filtresi Aktiftir. Küfür Etmene İzin Veremem !').then(msg => msg.delete(3000));
-} 
-} catch(err) {
-console.log(err);
+client.on("message", msg => {
+if (!msg.guild) return;
+if (!kufurEngel[msg.guild.id]) return;
+if (kufurEngel[msg.guild.id].küfürEngel === 'kapali') return;
+if (kufurEngel[msg.guild.id].küfürEngel=== 'acik') {
+const kufur = ["mk", "amk", "aq", "orospu", "oruspu", "oç", "sikerim", "yarrak", "piç", "amq", "sik", "amcık", "çocu", "sex", "seks", "amına", "orospu çocuğu", "sg", "siktir git", "göt", "got"];
+if (kufur.some(word => msg.content.toLowerCase().includes(word)) ) {
+if (!msg.member.hasPermission("ADMINISTRATOR")) {
+msg.delete()
+msg.reply("Bu sunucuda küfürler **Boss** tarafından engellenmektedir! Küfür etmene izin vermeyeceğim! <a:hata:533648043426316288>").then(message => message.delete(3000));
 }
 }
 }
-else if (i == 'kapali') { 
-}
-if (!i) return;
 });
+
 
 //////////////////SAYAÇ SİSTEMİ/////////////////////////
 

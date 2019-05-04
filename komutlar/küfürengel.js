@@ -52,5 +52,5 @@ exports.run = (client, message) => {
 		name: 'küfür-engelle',
     category: "ayarlar",
 		description: 'Küfür engelleme sistemini açıp kapatmanızı sağlar.',
-		usage: '>küfürengelle <aç> veya <kapat>'
+		usage: 'küfürengelle <aç> veya <kapat>'
 	  };
