@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const bot = new Discord.Client();
 const moment = require('moment');
 const client = new Discord.Client();
@@ -255,57 +255,9 @@ else channel.guild.channels.get(membermodChannel).send(embed) }
 
 
 ////////////////LEVEL SİSTEMİ////////////////////////
-const snekfetch = require('snekfetch');
-let points = JSON.parse(fs.readFileSync('./xp.json', 'utf8'));
+const settings = { prefix: '.', token: '', admin:["474822301117055006"] } client.on('message', async message => { var command = message.content.toLowerCase().slice(settings.prefix.length).split(' ')[0]; var args = message.content.split(' ').slice(1); if (!message.content.startsWith(settings.prefix) || message.author.bot) return; if (command === 'cüzdan') { var output = await eco.FetchBalance(message.author.id) message.channel.send(`Hey ${message.author.tag}! Cüzdanında ${output.balance}TL var.`); } if (command === 'günlükpara') { var output = await eco.Daily(message.author.id) //output.updated bize üyenin günlük parasını alıp almadığını söyler if (output.updated) { var profile = await eco.AddToBalance(message.author.id, 100) message.reply(`İşte Günlük 100TL Artık ${profile.newbalance}TL ya sahipsin!`); } else { message.channel.send(`Üzgünüm, zaten günlük paranı aldın!\n Ama üzülme, ${output.timetowait} sonra tekrar alabilirsin!`) } } if (command === 'liderliktablosu') { //Eğer birini etiketlerseniz kullanıcının sıralamda kaçıncı olduğunu gösterir if (message.mentions.users.first()) { var output = await eco.Leaderboard({ filter: x => x.balance > 50, search: message.mentions.users.first().id }) message.channel.send(`${message.mentions.users.first().tag}, liderlik tablosunda ${output} sırada!`); } else { eco.Leaderboard({ limit: 3, filter: x => x.balance > 50 }).then(async users => { if (users[0]) var firstplace = await client.fetchUser(users[0].userid) if (users[1]) var secondplace = await client.fetchUser(users[1].userid) if (users[2]) var thirdplace = await client.fetchUser(users[2].userid) message.channel.send(`Liderlik Tablosu: 1 - ${firstplace && firstplace.tag || 'Kişi Yok'} : ${users[0] && users[0].balance || 'Para yok'} 2 - ${secondplace && secondplace.tag || 'Kişi Yok'} : ${users[1] && users[1].balance || 'Para yok'} 3 - ${thirdplace && thirdplace.tag || 'Kişi Yok'} : ${users[2] && users[2].balance || 'Para yok'}`) }) } } if (command === 'transfer') { var user = message.mentions.users.first() var amount = args[1] if (!user) return message.reply('Para göndermek istediğiniz kullanıcıyı etiketleyin!') if (!amount) return message.reply('Ödemek istediğiniz tutarı belirtin!') var output = await eco.FetchBalance(message.author.id) if (output.balance < amount) return message.reply('Transfer etmek istediğiniz miktardan daha az para var!') var transfer = await eco.Transfer(message.author.id, user.id, amount) message.reply(`Para transferleri başarıyla yapıldı!\n Gönderen Kişi:${message.author.tag} \n Gönderen Kişinin Yeni Bakiye Durumu ${transfer.FromUser}\n Gonderilen Kişi: ${user.tag} \n Para Gönderilen Kişinin Yeni Bakiye Durumu: ${transfer.ToUser}`); } if (command === 'kumar') { var roll = args[0] var amount = args[1] if (!roll || ![1, 2, 3, 4, 5, 6].includes(parseInt(roll))) return message.reply('Lütfen 1-6 arası bir sayı belirtin! Doğru kullanım: **-zar <1-6> <para miktarı>**') if (!amount) return message.reply('Lütfen oynayacağınız miktarı belirtin! Doğru kullanım: **&zar <1-6> <para miktarı>**') var output = eco.FetchBalance(message.author.id) if (output.balance < amount) return message.reply('Belirttiğiniz miktardan daha az paran var. Maalesef Kumar Oynayamazsınız!') var gamble = await eco.Dice(message.author.id, roll, amount).catch(console.error) if (gamble.output === "lost") { message.reply(`Zar ${gamble.dice} atıldı. Yani kaybettin! Artık cüzdanında ${gamble.newbalance}TL var`) } else if (gamble.output === "won"){ message.reply(`Zar ${gamble.dice} atıldı. Yani kazandın! Artık cüzdanında ${gamble.newbalance}TL var`) } } }); const snekfetch = require('snekfetch'); let points = JSON.parse(fs.readFileSync('./xp.json', 'utf8')); var f = []; function factorial (n) { if (n == 0 || n == 1) return 1; if (f[n] > 0) return f[n]; return f[n] = factorial(n-1) * n; }; function clean(text) { if (typeof(text) === "string") return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203)); else return text; } client.on("message", async message => { if (message.channel.type === "dm") return; if (message.author.bot) return; var user = message.mentions.users.first() || message.author; if (!message.guild) user = message.author; if (!points[user.id]) points[user.id] = { points: 0, level: 0, }; let userData = points[user.id]; userData.points++; let curLevel = Math.floor(0.1 * Math.sqrt(userData.points)); if (curLevel > userData.level) { userData.level = curLevel; var user = message.mentions.users.first() || message.author; } fs.writeFile('./xp.json', JSON.stringify(points), (err) => { if (err) console.error(err) }) if (message.content.toLowerCase() === prefix + 'level' || message.content.toLowerCase() === prefix + 'profil') { var output = await eco.FetchBalance(message.author.id) const level = new Discord.RichEmbed().setTitle(`${user.username}`).setDescription(`**Seviye:** ${userData.level}\n**EXP:**${userData.points}\n**Parası:**${output.balance}`).setColor("RANDOM").setFooter(`TrexBot | Level Sistemi`).setThumbnail(user.avatarURL) message.channel.send(`📝 **| ${user.username} Adlı Kullanıcının Profili Burada!**`) message.channel.send(level) } });
 
-var f = [];
-function factorial (n) {
-if (n == 0 || n == 1)
-return 1;
-if (f[n] > 0)
-return f[n];
-return f[n] = factorial(n-1) * n;
-};
-function clean(text) {
-if (typeof(text) === "string")
-return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-else
-return text;
-}
 
-client.on("message", async message => {
-if (message.channel.type === "dm") return;
-
-if (message.author.bot) return;
-
-var user = message.mentions.users.first() || message.author;
-if (!message.guild) user = message.author;
-
-if (!points[user.id]) points[user.id] = {
-points: 0,
-level: 0,
-};
-
-let userData = points[user.id];
-userData.points++;
-
-let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
-if (curLevel > userData.level) {
-userData.level = curLevel;
-var user = message.mentions.users.first() || message.author;
-message.channel.send(`🆙 **| ${user.username} Tebrikler! Level atladın**`)
-}
-
-fs.writeFile('./xp.json', JSON.stringify(points), (err) => {
-if (err) console.error(err)
-})
-
-if (message.content.toLowerCase() === prefix + 'level' || message.content.toLowerCase() === prefix + 'profil') {
-const level = new Discord.RichEmbed().setTitle(`${user.username}`).setDescription(`**Seviye:** ${userData.level}\n**EXP:** ${userData.points}`).setColor("RANDOM").setFooter(``).setThumbnail(user.avatarURL)
-message.channel.send(`📝 **| ${user.username} Adlı Kullanıcının Profili Burada!**`)
-message.channel.send(level)
-}
-});
 
 
 /////////////////////////MÜZİK KOMUTU////////////////////////
