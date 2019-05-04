@@ -6,14 +6,9 @@ const fs = require('fs');
 const moment = require('moment');
 const Jimp = require('jimp');
 const db = require('quick.db');
-const YouTube = require('simple-youtube-api');
-const ytdl = require('ytdl-core');
-const youtube = new YouTube('AIzaSyCkT_L10rO_NixDHNjoAixUu45TVt0ES-s');
-const queue = new Map();
 require('./util/eventLoader')(client);
 const bot = new Discord.Client();
 require('moment-duration-format');
-let fs = require('fs');
 ///////////////RESİMLİ GİRİŞ ÇIKIŞ///////////////////////////
 client.on("guildMemberAdd", async member => {
 const fs = require('fs');

@@ -18,7 +18,9 @@
     "quick.db": "^6.3.2",
     "moment-duration-format": "^2.2.2",
     "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^0.29.0"
+    "ytdl-core": "^0.29.0",
+    "chalk": "^2.4.2",
+    "jimp": "^0.6.3"
   },
   "engines": {
     "node": "8.x"
