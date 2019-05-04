@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const moment = require('moment');
-const client = new Discord.Client();
 const db = require('quick.db');
 require('moment-duration-format');
 
@@ -146,9 +145,7 @@ client.on("guildMemberAdd", async member => {
     let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
     giriscikiskanali.send(`**:loudspeaker: :inbox_tray: Kullanıcı Katıldı** **\`${sayac[member.guild.id].sayi}\`** **Kişi Olmamıza** **\`${sayac[member.guild.id].sayi - member.guild.memberCount}\`** **Kişi Kaldı Şu Anda** **\`${member.guild.memberCount}\`** **Kişiyiz - Hoşgeldin** **\`${member.user.tag}\`**` );
   } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
-    return console.log(e)
-  }
-
+    return console.log(e))  }
   
 ////////////////////MOD LOG///////////////////////
  
@@ -612,4 +609,4 @@ function play(guild, song) {
 
 /////////////////////////
   
-client.login(ayarlar.token);
+client.login(ayarlar.token);R
