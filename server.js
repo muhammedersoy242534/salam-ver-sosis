@@ -1,3 +1,9 @@
+const Discord = require("discord.js");
+const bot = new Discord.Client();
+const moment = require('moment');
+const client = new Discord.Client();
+const db = require('quick.db');
+require('moment-duration-format');
 ///////////////RESİMLİ GİRİŞ ÇIKIŞ///////////////////////////
 client.on("guildMemberAdd", async member => {
 const fs = require('fs');
@@ -601,3 +607,7 @@ function play(guild, song) {
   .addField("Süre", `${song.durationm}:${song.durations}`, true)
   .setColor('RANDOM'));
 }
+
+/////////////////////////
+  
+client.login(ayarlar.token);
