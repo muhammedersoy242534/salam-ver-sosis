@@ -23,7 +23,7 @@ u.addRole(rol)
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ['toplu-rol-ver,herkezerolver,herkeze-rol-ver,herkeserolver'],
+    aliases: ["toplu-rol-ver","herkezerolver","herkeze-rol-ver","herkeserolver"],
     permLevel: 3
 }
 
