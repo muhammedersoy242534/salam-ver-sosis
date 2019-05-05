@@ -263,34 +263,51 @@ client.on('guildBanAdd', async (guild, member) => {
 
 
 ///////////////////KÜFÜR ENGELLEME///////////////////////
+client.on("message", async msg => {
+  db.fetch(`kufur_${msg.guild.id}`).then(i => {
+if (i == 'Açık') {
+        const kufur = ["fuck", "FUCK", "SHIT", "shit", "PORN", "porn", "xnxx", "XNXX","amk","aq","sik","siktir","aq","amk","oç","oruspu","orusbu","anan","sikerler","sikerim","s1kerler","s1kerim","s1ker1m","wtf","AMK","AQ","ORUSBU","ORUSPU","SİKERLER",,"GAY","GÖT","ANAN","PORNHUB.COM","pornhub.com","brazzers","BRAZZERS","ANANI","ananı","ananı sikerim","ananı sik","anamı sik","ANANI SİK","ANANI SİKERİM","şerefsiz","Şerefsiz","ŞEREFSİZ","orospu","orospu çocuğu","OC","Piç","PİÇ","yavşak","YAVŞAK","ibne","ipne","İBNE","İPNE","amına korum","pi.ç","piç"];
+        if (kufur.some(word => msg.content.includes(word))) {
+          try {
+             if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
 
-
-exports.run = async (client, message, args) => {
-  if (!args[0]) return message.channel.send('✅Aç yada Kapat yazmalısın! Örnek: i!küfürengel aç')
-  if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('`SUNUCUYU_YÖNET` yetkisine sahip olmalısın!')
-  
-  if (args[0] == 'aç') {
-    db.set(`kufur_${message.guild.id}`, 'Açık').then(i => {
-      message.channel.send('✅ Küfur Engel başarıyla açıldı! Üyeleri Yasakla yetkisine sahip olanların küfürü engellenmicektir.')
-    })
-  }
-  if (args[0] == 'kapat') {
-    db.set(`kufur_${message.guild.id}`, 'Kapalı').then(i => {
-      message.channel.send('✅ Küfür Engel başarıyla kapatıldı! Artık herkes küfür yazabilir.')
-    })
-  }
-
+                  return msg.reply(`Küfür Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+             }              
+          } catch(err) {
+            console.log(err);
+          }
+        } } else if (i == 'Kapalı') {
+ 
 }
-exports.conf = {
-  enabled: true,
-  guildOnly: true,
-  aliases: [],
-  permLevel: 0
-};
+   
+})
+});
 
-exports.help = {
-  name: 'küfürengel',
-  description: 'küfürengel',
-  usage: 'küfürengel'
-};
+
+/////////////////////////REKLAM ENGELLEME/////////////////////////
+client.on("message", async msg => {
+  db.fetch(`reklam_${msg.guild.id}`).then(i => {
+if (i == 'Açık') {
+        
+    const reklam = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ". com"];
+        if (reklam.some(word => msg.content.includes(word))) {
+          try {
+             if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
+
+                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+             }              
+          } catch(err) {
+            console.log(err);
+          }
+        } } else if (i == 'Kapalı') {
+ 
+}
+   
+})
+});
+
+arrow_double_up  bot.js içine 
+
 client.login(ayarlar.token);
