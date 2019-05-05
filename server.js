@@ -308,6 +308,5 @@ if (i == 'Açık') {
 })
 });
 
-arrow_double_up  bot.js içine 
 
 client.login(ayarlar.token);
