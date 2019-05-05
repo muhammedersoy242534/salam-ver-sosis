@@ -7,6 +7,7 @@ const fs = require('fs');
 const moment = require('moment');
 const db = require('quick.db');
 const Jimp = require('jimp');
+let linkEngel = JSON.parse(fs.readFileSync("././jsonlar/linkEngelle.json", "utf8"));
 require('./util/eventLoader')(client);
 var prefix = ayarlar.prefix;
 const log = message => {
@@ -286,27 +287,25 @@ if (i == 'Açık') {
 
 
 /////////////////////////REKLAM ENGELLEME/////////////////////////
-client.on("message", async msg => {
-  db.fetch(`reklam_${msg.guild.id}`).then(i => {
-if (i == 'Açık') {
-        
-    const reklam = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ". com"];
-        if (reklam.some(word => msg.content.includes(word))) {
-          try {
-             if (!msg.member.hasPermission("BAN_MEMBERS")) {
-                  msg.delete();
-
-                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
-             }              
-          } catch(err) {
-            console.log(err);
-          }
-        } } else if (i == 'Kapalı') {
- 
+client.on("message", msg => { 
+if (!linkEngel[msg.guild.id]) return;
+if (linkEngel[msg.guild.id].linkEngel === "kapali") return;
+    if (linkEngel[msg.guild.id].linkEngel === "acik") {
+    var regex = new RegExp(/(discord.gg|http|.gg|.com|.net|.org|invite|İnstagram|Facebook|watch|Youtube|youtube|facebook|instagram)/)
+    if (regex.test(msg.content)== true) {
+    if (!msg.member.hasPermission("ADMINISTRATOR")) {
+      msg.delete()
+       msg.channel.send(`<@${msg.author.id}>`).then(message => message.delete(5000));
+        var e = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor("Link Engeli!")
+        .setDescription(`Bu sunucuda linkler **${client.user.username}** tarafından engellenmektedir! Link atmana izin vermeyeceğim!`)
+        msg.channel.send(e).then(message => message.delete(5000));
+    }
 }
-   
-})
+    }
 });
+ 
 
 
 client.login(ayarlar.token);
