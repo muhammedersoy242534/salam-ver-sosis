@@ -1,5 +1,6 @@
 dependencies:
   chalk: 2.4.2
+  cleverbot.io: 1.0.4
   common-tags: 1.8.0
   discord.js: 11.4.2
   express: 4.16.4
@@ -727,6 +728,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
+  /cleverbot.io/1.0.4:
+    dependencies:
+      request: 2.88.0
+    dev: false
+    resolution:
+      integrity: sha1-gGSGLLHwm/eXfRO0tnsLkOgvQK8=
   /cliui/3.2.0:
     dependencies:
       string-width: 1.0.2
@@ -3249,6 +3256,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   chalk: ^2.4.2
+  cleverbot.io: ^1.0.4
   common-tags: ^1.8.0
   discord.js: ^11.4.2
   express: ^4.16.4
