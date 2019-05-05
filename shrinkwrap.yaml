@@ -9,6 +9,7 @@ dependencies:
   math-expression-evaluator: 1.2.17
   moment: 2.24.0
   moment-duration-format: 2.2.2
+  node-superfetch: 0.1.9
   quick-db: 1.0.5
   quick.db: 6.3.2
   simple-youtube-api: 5.1.1
@@ -2200,6 +2201,15 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-YuZKluhWGJwCcUu4RlZstdAxr8bFfOVHakc1mplwHkk8J+tqM1Y5yraYvIUpeX8aY7+crCwiELJq7Vl0o0LWXw==
+  /node-superfetch/0.1.9:
+    dependencies:
+      form-data: 2.3.3
+      node-fetch: 2.5.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-59rrdbpPmVIbizlRFRKTtzuvenG0Qnp48wUff4yXqTHKvKhYU7G7nxUVE/a1A/iva1MWLEQ+/ots3oM4JpEQIA==
   /normalize-package-data/2.5.0:
     dependencies:
       hosted-git-info: 2.7.1
@@ -3248,6 +3258,7 @@ specifiers:
   math-expression-evaluator: ^1.2.17
   moment: ^2.24.0
   moment-duration-format: ^2.2.2
+  node-superfetch: ^0.1.9
   quick-db: ^1.0.5
   quick.db: ^6.3.2
   simple-youtube-api: ^5.1.1
