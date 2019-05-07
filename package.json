@@ -26,7 +26,9 @@
     "math-expression-evaluator": "^1.2.17",
     "common-tags": "^1.8.0",
     "node-superfetch": "^0.1.9",
-    "cleverbot.io": "^1.0.4"
+    "cleverbot.io": "^1.0.4",
+    "ffmpeg": "^0.0.4",
+    "opusscript": "^0.0.6"
   },
   "engines": {
     "node": "8.x"
