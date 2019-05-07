@@ -319,8 +319,20 @@ client.on("message", msg => {
     });
 
 ////////////////////////EVERYONE ENGELLEME///////////////////
+client.on('message', message => {
+  if (message.content.includes('@everyone')) {
+    message.reply("Lütfen **here** Kullanmayınız.!!")
+    message.delete()
+  }
+});
 
 
+client.on('message', message => {
+  if (message.content.includes('@here')) {
+    message.reply("Lütfen **here** Kullanmayınız.!!")
+    message.delete()
+  }
+});
 
 ///////////////////////////SEVİYE SİSTEMİ////////////////////////////
 client.on("message", async msg => {
@@ -667,7 +679,7 @@ client.on('message', async msg => {
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setTitle(`🔊 Ses Seviyesi Ayarlanıyor: ${args[1]}`)
     .setColor('RANDOM'));                             
-	} else if (command === 'çalan') {
+	} else if (command === '.çalan') {
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setTitle("❎ | Şu An Şarkı Çalınmıyor!")
     .setColor('RANDOM'));
@@ -676,7 +688,7 @@ client.on('message', async msg => {
     .setTitle("Çalan")                            
     .addField('Başlık', `[${serverQueue.songs[0].title}](${serverQueue.songs[0].url})`, true)
     .addField("Süre", `${serverQueue.songs[0].durationm}:${serverQueue.songs[0].durations}`, true))
-	} else if (command === 'sıra') {
+	} else if (command === '.sıra') {
     let index = 0;
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setTitle("❎ | Şarkı Kuyruğunda Şarkı Bulunmamakta")
@@ -686,7 +698,7 @@ client.on('message', async msg => {
      .setTitle('Şarkı Kuyruğu')
     .setDescription(`${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}`))
     .addField('Şu Anda Çalınan: ' + `${serverQueue.songs[0].title}`);
-	} else if (command === '.duraklat') {
+	} else if (command === '.durdur') {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
@@ -742,10 +754,10 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 			queueConstruct.connection = connection;
 			play(msg.guild, queueConstruct.songs[0]);
 		} catch (error) {
-			console.error(`❎ | **Şarkı Sisteminde Problem Var Hata Nedeni: ${error}**`);
+			console.error("❎ | Şarkı Sisteminde Problem Var Hata Nedeni: ${error}");
 			queue.delete(msg.guild.id);
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setTitle(`❎ | **Şarkı Sisteminde Problem Var Hata Nedeni: ${error}**`)
+      .setTitle("❎ | Şarkı Sisteminde Problem Var Hata Nedeni: ${error}")
       .setColor('RANDOM'))
 		}
 	} else {
@@ -753,7 +765,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle(`✅ | **${song.title}** Adlı Şarkı Kuyruğa Eklendi!`)
+    .setTitle("✅ | ${song.title} Adlı Şarkı Kuyruğa Eklendi!")
     .setColor('RANDOM'))
 	}
 	return undefined;
@@ -771,7 +783,7 @@ function play(guild, song) {
 
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
 		.on('end', reason => {
-			if (reason === '❎ | **Yayın Akış Hızı Yeterli Değil.**') console.log('Şarkı Bitti.');
+			if (reason === '❎ | Yayın Akış Hızı Yeterli Değil.') console.log('Şarkı Bitti.');
 			else console.log(reason);
 			serverQueue.songs.shift();
 			play(guild, serverQueue.songs[0]);
@@ -780,7 +792,7 @@ function play(guild, song) {
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
 	 serverQueue.textChannel.sendEmbed(new Discord.RichEmbed()                                   
-  .setTitle("**🎙 Şarkı Başladı**",`https://i.hizliresim.com/RDm4EZ.png`)
+  .setTitle("🎙 Şarkı Başladı",`https://i.hizliresim.com/RDm4EZ.png`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .addField('\nBaşlık', `[${song.title}](${song.url})`, true)
   .addField("\nSes Seviyesi", `${serverQueue.volume}%`, true)
