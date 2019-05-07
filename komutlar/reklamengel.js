@@ -28,5 +28,5 @@ exports.conf = {
 exports.help = {
   name: 'reklamengel',
   description: '[Admin Komutu]',
-  usage: 'küfür-engelleme'
+  usage: 'link-engelleme'
 };
