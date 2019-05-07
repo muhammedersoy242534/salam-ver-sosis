@@ -348,4 +348,245 @@ client.on("message", async msg => {
   };
   
 });
+
+/////////////////////SUNUCU KURMA/////////////////////
+client.on('message', async message => {
+  const ms = require('ms');
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  let u = message.mentions.users.first() || message.author;
+  if (command === "sunucu-kur") {
+  if (message.guild.channels.find(channel => channel.name === "Bot Kullanımı")) return message.channel.send(" Bot Paneli Zaten Ayarlanmış.")
+  message.channel.send(`Bot Bilgi Kanallarının kurulumu başlatılsın mı? başlatılacak ise **evet** yazınız.`)
+      if (!message.member.hasPermission('ADMINISTRATOR'))
+  return message.channel.send(" Bu Kodu `Yönetici` Yetkisi Olan Kişi Kullanabilir.");
+      message.channel.awaitMessages(response => response.content === 'evet', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+
+
+.then((collected) => {
+   message.guild.createChannel('📜│Bilgilendirme.', 'category', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
+
+client.on('guildMemberAdd', async member => {
+  let rol = await db.fetch(`otorol_${member.guild.id}`)
+  db.fetch(`otorolkanal_${member.guild.id}`).then(async i => {
+  const channel = member.guild.channels.get(i)
+  if (!i) return;
+  let guild = member.guild;
+  let otorol = guild.roles.find('name', `${rol}`);
+  member.addRole(otorol);
+    channel.send(`**${member.user.tag}** adlı kullanıcıya \`${rol}\` adlı rol verildi!`)
+})
+});
+
+
+ message.guild.createChannel('📌│кυяαllαя', 'text', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
+.then(channel =>
+ channel.setParent(message.guild.channels.find(channel => channel.name === "📜│Bilgilendirme.")));
+ message.guild.createChannel('🍺│gıяıѕ-çıкıѕ', 'text', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
+.then(channel =>
+       channel.setParent(message.guild.channels.find(channel => channel.name === "📜│Bilgilendirme.")));
+       message.guild.createChannel('💥│ѕαчαç', 'text', [{
+        id: message.guild.id,
+        deny: ['SEND_MESSAGES']
+      }])
+.then(channel =>
+             channel.setParent(message.guild.channels.find(channel => channel.name === "📜│Bilgilendirme.")));
+             message.guild.createChannel('📊│αикεт', 'text', [{
+              id: message.guild.id,
+              deny: ['SEND_MESSAGES']
+            }])
+            .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "📜│Bilgilendirme.")));
+            message.guild.createChannel('📣│dυчυяυlαя', 'text', [{
+              id: message.guild.id,
+              deny: ['SEND_MESSAGES']
+            }])
+.then(channel =>
+ channel.setParent(message.guild.channels.find(channel => channel.name === "📜│Bilgilendirme.")));
+
+       })
+       .then((collected) => {
+        message.guild.createChannel('⚡│Ana. Kanallar.', 'category', [{
+       id: message.guild.id,
+     }]);
+
+    message.guild.createChannel(`🌺│тαvsıyε`, 'text')
+     .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "⚡│Ana. Kanallar.")));
+     message.guild.createChannel(`🌙│σzlu-ѕσzlεя`, 'text')
+     .then(channel =>
+            channel.setParent(message.guild.channels.find(channel => channel.name === "⚡│Ana. Kanallar.")));
+     message.guild.createChannel(`📷│fσтσğяαflαя`, 'text')
+     .then(channel =>
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "⚡│Ana. Kanallar.")));
+     message.guild.createChannel(`🤖│вσт-кσмυтlαяı`, 'text')
+     .then(channel =>
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "⚡│Ana. Kanallar.")));
+     message.guild.createChannel(`💭│gεиεl-ѕσнвεт`, 'text')
+     .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "⚡│Ana. Kanallar.")));
+
+      message.guild.createChannel(`✯ │ŁØRÐ. &`, "voice")
+      .then(channel =>
+        channel.setParent(message.guild.channels.find(channel => channel.name === "🏆 │ Yetkili Katı")))
+      .then(c => {
+        let role = message.guild.roles.find("name", "@everyone");
+        let role2 = message.guild.roles.find("name", "⍫ Kurucu 🌹");
+
+        c.overwritePermissions(role, {
+            CONNECT: true,
+        });
+        c.overwritePermissions(role2, {
+            CONNECT: true,
+
+        });
+    })
+
+    message.guild.createChannel('🏆 │ Yetkili Katı', 'category', [{
+      id: message.guild.id,
+    }]);
+
+    message.guild.createChannel(`💮│Kâptân. &`, "voice")
+    .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "🏆 │ Yetkili Katı")))
+    .then(c => {
+      let role = message.guild.roles.find("name", "@everyone");
+      let role2 = message.guild.roles.find("name", "⍫ Kurucu 🌹");
+      let role3 = message.guild.roles.find("name", "⍫ Yonetici 🌹");
+      c.overwritePermissions(role, {
+          CONNECT: true,
+      });
+      c.overwritePermissions(role2, {
+          CONNECT: true,
+      });
+      c.overwritePermissions(role3, {
+          CONNECT: true,
+      });
+  })
+
+  message.guild.createChannel(`⭐│Sohbet. †`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "🏆 │ Yetkili Katı")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
+  message.guild.createChannel(`⭐│Sohbet. ††`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "🏆 │ Yetkili Katı")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
+
+      message.guild.createRole({
+        name: '✯ │ŁØRÐ. &',
+        color: 'ff0000',
+        permissions: [
+            "ADMINISTRATOR",
+    ]
+      })
+
+
+      message.guild.createRole({
+        name: '💮│Kâptân. &',
+        color: '49ff00',
+        permissions: [
+            "MANAGE_GUILD",
+            "MANAGE_ROLES",
+            "MUTE_MEMBERS",
+            "DEAFEN_MEMBERS",
+            "MANAGE_MESSAGES",
+            "MANAGE_NICKNAMES",
+            "KICK_MEMBERS"
+    ]
+      })
+
+      message.guild.createRole({
+        name: '🍁│Yønetici. &',
+        color: 'ffb400',
+        permissions: [
+            "MANAGE_GUILD",
+            "MANAGE_ROLES",
+            "MUTE_MEMBERS",
+            "DEAFEN_MEMBERS",
+            "MANAGE_MESSAGES",
+            "MANAGE_NICKNAMES"
+    ]
+      })
+
+      message.guild.createRole({
+        name: '💐│Łâdiεs. &',
+        color: 'd300ff',
+      })
+
+      message.guild.createRole({
+        name: '🏆│Bøys. &',
+        color: 'ffffff',
+      })
+
+      message.guild.createRole({
+        name: '🛡 │Authorizεd. Bot. &',
+        color: '0006ff',
+      })
+
+       message.channel.send("⍫ Gerekli Roller Ve Odalar Kuruldu 🌹")
+
+            })
+
+}
+});
+
+//////////////////////TEMİZLE////////////////////////
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '//çöp') {
+    if (msg.channel.type === 'dm') {
+      const ozelmesajuyari = new Discord.RichEmbed()
+    .setColor(0xdcff00)
+    .setTimestamp()
+    .setAuthor(msg.author.username, msg.author.avatarURL)
+    .addField('⚠ Uyarı ⚠', 'Bu komutu özel mesajlarda kullanamazsın.')
+    msg.author.sendEmbed(ozelmesajuyari); }
+      if (msg.channel.type !== 'dm') {
+        if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+          if (msg.author.id !== ayarlar.yapimci) {
+            const mesajlariyonet = new Discord.RichEmbed()
+          .setColor(0xFF0000)
+          .setTimestamp()
+          .setAuthor(msg.author.username, msg.author.avatarURL)
+          .addField('⚠ Uyarı ⚠', 'Bu komutu kulllanmak için `Mesajları Yönet` iznine sahip olmalısın.')
+          return msg.author.sendEmbed(mesajlariyonet);
+      }}
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100); //500 mesaj gg
+      const sohbetsilindi = new Discord.RichEmbed()
+    .setColor(0x35ff00)
+    .setTimestamp()
+    .addField('Eylem:', '**Sohbet silme**')
+    .addField('Yetkili:', '` ' + msg.author.username + '`')
+    .addField('Silinen Mesaj Sayısı:', '»'+ '  **500**  ' + '«')
+    .addField('Sonuç:', '`Başarılı`'+ ' ✅ ')
+    return msg.channel.sendEmbed(sohbetsilindi).then(msg => msg.delete(2900));
+}}});
 client.login(ayarlar.token);
