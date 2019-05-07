@@ -291,25 +291,25 @@ console.log(err);
 client.on("message", async msg => {
   db.fetch(`reklam_${msg.guild.id}`).then(i => {
 if (i == 'Açık') {
-
-    const reklam = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl"];
+        
+    const reklam = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ". com"];
         if (reklam.some(word => msg.content.includes(word))) {
           try {
              if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
-               
 
-                  return msg.reply('Reklam Tespit Edildi! ⚠').then(msg => msg.delete(3000));
-             }
+                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+             }              
           } catch(err) {
             console.log(err);
           }
         } } else if (i == 'Kapalı') {
-
+ 
 }
-
+   
 })
 });
+
 
 ////////////////////////EVERYONE ENGELLEME///////////////////
 
