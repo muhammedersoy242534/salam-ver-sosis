@@ -549,7 +549,7 @@ message.channel.send("⍫ Gerekli Roller Ve Odalar Kuruldu 🌹")
 }
 });
 
-//////////////////////TEMİZLE////////////////////////
+//////////////////////MÜZİK KOMUTU////////////////////////
 
 client.on('message', async msg => {
 
@@ -638,7 +638,7 @@ client.on('message', async msg => {
     .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
      .setColor('RANDOM')
-     .setTitle('❎ **Şu An Zaten Şarkı Çalmıyorum!'));                                              
+     .setTitle('❎ | Şu An Zaten Şarkı Çalmıyorum!'));                                              
 		serverQueue.connection.dispatcher.end('**Sıradaki Şarkıya Geçildi!**');
 		return undefined;
 	} else if (command === '.durdur') {
@@ -665,7 +665,7 @@ client.on('message', async msg => {
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle(`:loud_sound: Ses Seviyesi Ayarlanıyor: **${args[1]}**`)
+    .setTitle(`🔊 Ses Seviyesi Ayarlanıyor: ${args[1]}`)
     .setColor('RANDOM'));                             
 	} else if (command === 'çalan') {
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
@@ -679,7 +679,7 @@ client.on('message', async msg => {
 	} else if (command === 'sıra') {
     let index = 0;
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("❎ | **Şarkı Kuyruğunda Şarkı Bulunmamakta**")
+    .setTitle("❎ | Şarkı Kuyruğunda Şarkı Bulunmamakta")
     .setColor('RANDOM'));
 		  return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setColor('RANDOM')
@@ -694,17 +694,17 @@ client.on('message', async msg => {
       .setTitle("**:pause_button: Şarkı Durduruldu!**")
       .setColor('RANDOM'));
 		}
-		return msg.channel.send('❎ | **Şarkı Çalmıyor Şu An**');
+		return msg.channel.send('❎ | Şarkı Çalmıyor Şu An');
 	} else if (command === '.devam') {
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setTitle("**:arrow_forward: Şarkı Devam Ediyor!**")
+      .setTitle(":arrow_forward: Şarkı Devam Ediyor!")
       .setColor('RANDOM'));
 		}
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("**❎ | Şu An Şarkı Çalınmıyor!**")
+    .setTitle("❎ | Şu An Şarkı Çalınmıyor!")
     .setColor('RANDOM'));
 	}
   

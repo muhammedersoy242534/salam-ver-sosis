@@ -11,7 +11,8 @@ exports.run = (client, message, params) => {
   .setColor(0x00ffff)
        .addField("**>oynat = Şarkıyı Başlatır**", `**>geç = Dinlenilen Şarkıyı Atlar**`)
   .addField("**>ses = Ses Seviyesini Ayarlar**", `**>çalan = O Anda Çalan Şarkıyı Söyler**`)
-    .addField("**>duraklat = Çalan Şarkıyı Duraklatır **", `**>devamet = Duraklatılan Şarkıyı Devam Ettirir**`)
+    .addField("**>durdur = Çalan Şarkıyı Durdurur**", `**>devam = Duraklatılan Şarkıyı Devam Ettirir**`)
+    .addField("**>sıra = Şarkı Sırasını Gösterir **")
 
   
   if (!params[0]) {
