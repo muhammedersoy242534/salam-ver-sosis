@@ -1,41 +1,42 @@
-const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json');
+const { Canvas } = require("canvas-constructor");
+const { get } = require("snekfetch");
 
-exports.run = (client, message, params) => {
+module.exports.run = (bot, message, args) => {
+    const serverSize = message.guild.memberCount;
+    const botCount = message.guild.members.filter(m => m.user.bot).size;
+    const humanCount = serverSize - botCount;
+    const ad = message.guild.name;
+    const sahip = message.guild.owner
+    const kanal = message.guild.defaultChannel
+    const bolge = message.guild.region
+    const id = message.guild.id
+        const canvas = new Canvas(400, 250)
+        .setColor("#2C2F33")
+        .addRect(0, 0, 400, 250)
+        .setColor("#ffffff")
+        .setTextFont('30px Impact')
+        .addText(`Sunucu Bilgileri`, 70, 30)
+        .setTextFont('15px Impact')
+        .addText(`Sunucu Adı: ${ad}`, 10, 125)
+        .addText(`Sunucu İdsi: ${id}`, 10, 150)
+        .addText(`Ana Kanalı: ${kanal}`, 10, 175)
+        .addText(`Üye Sayısı: ${serverSize}`, 10, 200)
+        .addText(`Sunucu Bölgesi: ${bolge}`, 10, 225)
+        .save();
+        
+        message.channel.send({files: [{ attachment: canvas.toBuffer(), name: "Account.png"}]});
+   ;
+}
 
-    if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
-    .setColor(0xFF0000)
-    .setTimestamp()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .addField(':warning: Uyarı :warning:', '`sunucubilgi` adlı komutu özel mesajlarda kullanamazsın.')
-    return message.author.sendEmbed(ozelmesajuyari); }
-    if (message.channel.type !== 'dm') {
-      const sunucubilgi = new Discord.RichEmbed()
-    .setColor(0x00AE86)
-    .setTimestamp()
-    .setAuthor(message.guild.name, message.guild.iconURL)
-    .addField('Sunucu Adı:', message.guild.name)
-    .addField('Sunucu ID:', message.guild.id)
-    .addField('Ana kanal:', message.guild.defaultChannel)
-    .addField('Sunucu Bölgesi:', message.guild.region)
-    .addField('Üye sayısı:', message.guild.memberCount)
-    .addField('Sahibi:', message.guild.owner + ' (' + message.guild.ownerID + ')')
-    .addField('Kanal sayısı:', message.guild.channels.size)
-    .addField('Oluşturulma tarihi:', message.guild.createdAt)
-    return message.channel.sendEmbed(sunucubilgi);
-    }
-};
-
-exports.conf = {
+module.exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['sunucu', 'sunucu bilgi', 'sbilgi'],
+  aliases: ["sunucu-üye","sunucuü","sunucubilgi","sunucu-bilgi"],
   permLevel: 0
 };
 
-exports.help = {
-  name: 'sunucubilgi',
-  description: 'Sunucu hakkında bilgi verir.',
-  usage: 'sunucubilgi'
+module.exports.help = {
+  name: "sunucubilgi",
+  description: "Sunucudaki üye bilgilerini gösterir.",
+  usage: "sunucuüye"
 };
