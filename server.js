@@ -335,25 +335,12 @@ client.on('message', message => {
 });
 
 ///////////////////////////SEVİYE SİSTEMİ////////////////////////////
-client.on("message", async msg => {
 
-if (msg.channel.type === "dm") return;
-if(msg.author.bot) return; 
 
-if (msg.content.length > 7) {
 
-db.add(`puan_${msg.author.id + msg.guild.id}`, 3)
-};
 
-if (db.fetch(`puan_${msg.author.id + msg.guild.id}`) > 150) {
 
-db.add(`seviye_${msg.author.id + msg.guild.id}`, 1)
 
-db.delete(`puan_${msg.author.id + msg.guild.id}`)
-
-};
-
-});
 
 /////////////////////SUNUCU KURMA/////////////////////
 client.on('message', async message => {
