@@ -833,7 +833,7 @@ Jimp.read("https://i.postimg.cc/W3XJf156/12.png");
             else font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
             await bg.print(font, 430, 170, member.user.tag);
             await userimg.resize(300, 300);
-            await bg.composite(userimg, 94, 54).write("./img/"+ member.id + ".png");
+            await bg.composite(userimg, 42, 26).write("./img/"+ member.id + ".png");
               setTimeout(function () {
                     hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
               }, 1000);
