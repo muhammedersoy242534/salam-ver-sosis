@@ -334,10 +334,10 @@ client.on('message', message => {
   }
 });
 
-///////////////////////////SEVİYE SİSTEMİ////////////////////////////
+///////////////////////////TEMİZLEME////////////////////////////
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === '//çöp') {
+  if (msg.content.toLowerCase() === '.çöp') {
     if (msg.channel.type === 'dm') {
       const ozelmesajuyari = new Discord.RichEmbed()
     .setColor(0xdcff00)

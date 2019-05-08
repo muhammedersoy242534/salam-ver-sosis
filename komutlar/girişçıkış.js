@@ -1,39 +1,27 @@
-const Discord = require('discord.js')
-const fs = require('fs');
-const ayarlar = require('../ayarlar.json');
-let kanal = JSON.parse(fs.readFileSync("./ayarlar/glog.json", "utf8"));
-
-var prefix = ayarlar.prefix;
-
-exports.run = async (client, message, args) => {
-if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`Bu Komutu Kullanabilmek İçin **Yönetici** İznine Sahip Olmalısın!`);
-  
-  let channel = message.mentions.channels.first()
-    if (!channel) {
-        message.channel.send('<:hayır:551370960520085517> | Kullanım: `{prefix}giriş-çıkış-ayarla #kanal`')
-        return
-    }
-    if(!kanal[message.guild.id]){
-        kanal[message.guild.id] = {
-            resim: channel.id
-        };
-    }
-    fs.writeFile("./ayarlar/glog.json", JSON.stringify(kanal), (err) => {
-        console.log(err)
-    })
-    message.channel.send(`:white_check_mark: | ** Resimli Hoşgeldin - Güle Güle kanalı ${channel} Olarak Ayarlandı.** `)
-}
-    
+const Discord = require('discord.js');
+exports.run = (client, message, args) => { 
+    var Jimp = require("jimp");
+    const Discord = require('discord.js');
+    let img    = Jimp.read(message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL),
+    moldura = Jimp.read("https://i.imgur.com/tZ6OQWe.png");
+    Promise.all([img, moldura]).then(imgs => {
+    let moldura = imgs[0],
+        img = imgs[1];
+    moldura.resize(78, 74);    // KULLANICI FOTOĞAFI <-
+    img.resize(392, 184)   // ARKA PLAN BÜYÜKLÜĞÜ
+    img.composite(moldura, 25, 53).getBuffer(Jimp.MIME_PNG, (err, buffer) => { // X-Y-Z
+        if (!err) 
+        message.channel.send(new Discord.Attachment(buffer));        
+    });
+})};
 exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: ['giriş-çıkış-ayarla','girişçıkışayarla'],
-    permLevel: 2
-}
-
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
 exports.help = {
-    name: 'giriş-çıkış',
-    description: 'Giriş Çıkış Kanalını Ayarlar.',
-    usage: 'gç-ayarla <#kanal>'
-}
-
+  name: 'girişçıkış',
+  description: 'Hoşgedin resmi.',
+  usage: '.hoşgeldin'
+};
