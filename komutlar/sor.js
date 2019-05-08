@@ -7,7 +7,7 @@ exports.run = (client, message, params) => {
 bot.setNick('Valley');
 let yazi = params.slice(0).join(' ');
  if (yazi.length < 1) return message.reply('Bir mesaj yazmalısın.');
-   message.channel.send(`🔄 Mesaj Yükleniyor... Lütfen Bekleyiniz Bu İşlem Biraz Uzun Sürebilir`).then(msg => msg.delete(10000));
+   message.channel.send(`🔄 Mesaj Yükleniyor... Lütfen Bekleyiniz.`).then(msg => msg.delete(10000));
 bot.create(function (err, session) {
     bot.ask(yazi, function (err, response) {
         console.log(response)
