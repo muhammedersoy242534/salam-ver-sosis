@@ -10,7 +10,7 @@ exports.run = async (client, msg, args) => {
 
         if(u.bot === true) {
                 const embed = new Discord.RichEmbed()
-                        .setDescription("BotlarÄ±n seviyesi bulunmamaktadÄ±r!")
+                        .setDescription("Botların seviyesi bulunmamaktadır!")
                         .setColor("RANDOM")
                 msg.channel.send(embed)
                 return
@@ -68,7 +68,7 @@ exports.run = async (client, msg, args) => {
         ctx.fillStyle = `#${re}`;
         ctx.font = '28px Impact';
         ctx.textAlign = "right";
-        ctx.fillText(`SÄ±ralama #${sira} | Seviye ${lvl || 0}`, 670, 70);
+        ctx.fillText(`Sıralama #${sira} | Seviye ${lvl || 0}`, 670, 70);
         ctx.font = '20px Impact';
         ctx.textAlign = "right";
         ctx.fillText(`${xp || 0} / 150 XP`, 670, 100);
@@ -81,8 +81,8 @@ exports.run = async (client, msg, args) => {
   ctx.fill()
         ctx.lineWidth = 8;
         ctx.arc(43 + 67, 67 + 67, 67, 0, 2 * Math.PI, false);
-	ctx.clip();
-	ctx.drawImage(avatar, 43, 67, 135, 130);
+    ctx.clip();
+    ctx.drawImage(avatar, 43, 67, 135, 130);    //dbe kod paylasim
     
         msg.channel.send({files:[{attachment:canvas.toBuffer(),name:"seviye.png"}]})
   
@@ -91,7 +91,7 @@ exports.run = async (client, msg, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["seviye","level"],
+  aliases: [`level`, `levelim`, `rank`, `rankım`, `seviyem`],
   permLevel: 0,
 };
 
