@@ -825,7 +825,7 @@ let gc = JSON.parse(fs.readFileSync("./jsonlar/cogc.json", "utf8"));
         let username = member.user.username;
    
             const bg = await
-Jimp.read("https://i.hizliresim.com/9an43o.png");
+Jimp.read("https://i.postimg.cc/W3XJf156/12.png");
             const userimg = await Jimp.read(member.user.avatarURL);
             var font;
             if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
@@ -854,7 +854,7 @@ let cogc = JSON.parse(fs.readFileSync("./jsonlar/cogc.json", "utf8"));
         let username = member.user.username;
          
             const bg = await
-Jimp.read("https://i.postimg.cc/zGJqxvfr/guild-Remove.png");
+Jimp.read("https://i.postimg.cc/fydSWfw5/123.png");
             const userimg = await Jimp.read(member.user.avatarURL);
             var font;
             if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
