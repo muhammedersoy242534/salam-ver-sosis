@@ -293,81 +293,81 @@ console.log(err);
 
 /////////////////////////REKLAM ENGELLEME/////////////////////////
 client.on("message", msg => {
-  db.fetch(`reklam_${msg.guild.id}`).then(i => {
-    if (i == 'acik') {
-        const reklam = [".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", "net", ".rf.gd", ".az", ".party", "discord.gg",];
-        if (reklam.some(word => msg.content.includes(word))) {
-          try {
-            if (!msg.member.hasPermission("BAN_MEMBERS")) {
-                  msg.delete();
-                    return msg.reply('Bu Sunucuda Reklam Engelleme Filtresi Aktiftir. Reklam Yapmana İzin Veremem !').then(msg => msg.delete(3000));
-    
+db.fetch(`reklam_${msg.guild.id}`).then(i => {
+if (i == 'acik') {
+const reklam = [".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", "net", ".rf.gd", ".az", ".party", "discord.gg",];
+if (reklam.some(word => msg.content.includes(word))) {
+try {
+if (!msg.member.hasPermission("BAN_MEMBERS")) {
+msg.delete();
+return msg.reply('Bu Sunucuda Reklam Engelleme Filtresi Aktiftir. Reklam Yapmana İzin Veremem !').then(msg => msg.delete(3000));
 
-  msg.delete(3000);                              
 
-            }              
-          } catch(err) {
-            console.log(err);
-          }
-        }
-    }
-    else if (i == 'kapali') {
-      
-    }
-    if (!i) return;
-  })
-    });
+msg.delete(3000); 
+
+} 
+} catch(err) {
+console.log(err);
+}
+}
+}
+else if (i == 'kapali') {
+
+}
+if (!i) return;
+})
+});
 
 ////////////////////////EVERYONE ENGELLEME///////////////////
 client.on('message', message => {
-  if (message.content.includes('@everyone')) {
-    message.reply("Lütfen **here** Kullanmayınız.!!")
-    message.delete()
-  }
+if (message.content.includes('@everyone')) {
+message.reply("Lütfen **here** Kullanmayınız.!!")
+message.delete()
+}
 });
 
 
 client.on('message', message => {
-  if (message.content.includes('@here')) {
-    message.reply("Lütfen **here** Kullanmayınız.!!")
-    message.delete()
-  }
+if (message.content.includes('@here')) {
+message.reply("Lütfen **here** Kullanmayınız.!!")
+message.delete()
+}
 });
 
 ///////////////////////////TEMİZLEME////////////////////////////
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === '.çöp') {
-    if (msg.channel.type === 'dm') {
-      const ozelmesajuyari = new Discord.RichEmbed()
-    .setColor(0xdcff00)
-    .setTimestamp()
-    .setAuthor(msg.author.username, msg.author.avatarURL)
-    .addField('⚠ Uyarı ⚠', 'Bu komutu özel mesajlarda kullanamazsın.')
-    msg.author.sendEmbed(ozelmesajuyari); }
-      if (msg.channel.type !== 'dm') {
-        if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
-          if (msg.author.id !== ayarlar.yapimci) {
-            const mesajlariyonet = new Discord.RichEmbed()
-          .setColor(0xFF0000)
-          .setTimestamp()
-          .setAuthor(msg.author.username, msg.author.avatarURL)
-          .addField('⚠ Uyarı ⚠', 'Bu komutu kulllanmak için `Mesajları Yönet` iznine sahip olmalısın.')
-          return msg.author.sendEmbed(mesajlariyonet);
-      }}
-      msg.channel.bulkDelete(100);
-      msg.channel.bulkDelete(100);
-      msg.channel.bulkDelete(100);
-      msg.channel.bulkDelete(100);
-      msg.channel.bulkDelete(100); //500 mesaj gg
-      const sohbetsilindi = new Discord.RichEmbed()
-    .setColor(0x35ff00)
-    .setTimestamp()
-    .addField('Eylem:', '**Sohbet silme**')
-    .addField('Yetkili:', '` ' + msg.author.username + '`')
-    .addField('Silinen Mesaj Sayısı:', '»'+ '  **500**  ' + '«')
-    .addField('Sonuç:', '`Başarılı`'+ ' ✅ ')
-    return msg.channel.sendEmbed(sohbetsilindi).then(msg => msg.delete(2900));
+if (msg.content.toLowerCase() === '.çöp') {
+if (msg.channel.type === 'dm') {
+const ozelmesajuyari = new Discord.RichEmbed()
+.setColor(0xdcff00)
+.setTimestamp()
+.setAuthor(msg.author.username, msg.author.avatarURL)
+.addField('⚠ Uyarı ⚠', 'Bu komutu özel mesajlarda kullanamazsın.')
+msg.author.sendEmbed(ozelmesajuyari); }
+if (msg.channel.type !== 'dm') {
+if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+if (msg.author.id !== ayarlar.yapimci) {
+const mesajlariyonet = new Discord.RichEmbed()
+.setColor(0xFF0000)
+.setTimestamp()
+.setAuthor(msg.author.username, msg.author.avatarURL)
+.addField('⚠ Uyarı ⚠', 'Bu komutu kulllanmak için `Mesajları Yönet` iznine sahip olmalısın.')
+return msg.author.sendEmbed(mesajlariyonet);
+}}
+msg.channel.bulkDelete(100);
+msg.channel.bulkDelete(100);
+msg.channel.bulkDelete(100);
+msg.channel.bulkDelete(100);
+msg.channel.bulkDelete(100); //500 mesaj gg
+const sohbetsilindi = new Discord.RichEmbed()
+.setColor(0x35ff00)
+.setTimestamp()
+.addField('Eylem:', '**Sohbet silme**')
+.addField('Yetkili:', '` ' + msg.author.username + '`')
+.addField('Silinen Mesaj Sayısı:', '»'+ ' **500** ' + '«')
+.addField('Sonuç:', '`Başarılı`'+ ' ✅ ')
+return msg.channel.sendEmbed(sohbetsilindi).then(msg => msg.delete(2900));
 }}});
 
 /////////////////////SUNUCU KURMA/////////////////////
@@ -591,19 +591,19 @@ client.on('message', async msg => {
 	if (command === '.oynat') {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setColor('RANDOM')
-    .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
+.setColor('RANDOM')
+.setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setTitle('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
+.setColor('RANDOM')
+.setTitle('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		}
 		if (!permissions.has('SPEAK')) {
 			 return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setTitle('❎ | Şarkıyı Çalamıyorum Bu Kanalda Konuşma Yetkim Yok!'));
-        }
+.setColor('RANDOM')
+.setTitle('❎ | Şarkıyı Çalamıyorum Bu Kanalda Konuşma Yetkim Yok!'));
+}
 
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 			const playlist = await youtube.getPlaylist(url);
@@ -613,7 +613,7 @@ client.on('message', async msg => {
 				await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
 			}
 			 return msg.channel.sendEmbed(new Discord.RichEmbed)
-      .setTitle(`✅** | **${playlist.title}** Adlı Şarkı Kuyruğa Eklendi!**`)
+.setTitle(`✅** | **${playlist.title}** Adlı Şarkı Kuyruğa Eklendi!**`)
 		} else {
 			try {
 				var video = await youtube.getVideo(url);
@@ -621,14 +621,14 @@ client.on('message', async msg => {
 				try {
 					var videos = await youtube.searchVideos(searchString, 10);
 					let index = 0;
-          
-				 msg.channel.sendEmbed(new Discord.RichEmbed()                  
-         .setTitle('Şarkı Seçimi')
-         .setDescription(`${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}`)
-         .setFooter('Lütfen 1-10 Arasında Bir Rakam Seçiniz 10 Saniye İçinde Liste İptal Edilecektir!')
+
+				 msg.channel.sendEmbed(new Discord.RichEmbed() 
+.setTitle('Şarkı Seçimi')
+.setDescription(`${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}`)
+.setFooter('Lütfen 1-10 Arasında Bir Rakam Seçiniz 10 Saniye İçinde Liste İptal Edilecektir!')
 	 .setFooter('Boss Müzik')
-         .setColor('0x36393E'));
-          msg.delete(5000)
+.setColor('0x36393E'));
+msg.delete(5000)
 					try {
 						var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
 							maxMatches: 1,
@@ -638,20 +638,20 @@ client.on('message', async msg => {
 					} catch (err) {
 						console.error(err);
 						 return msg.channel.sendEmbed(new Discord.RichEmbed()
-            .setColor('0x36393E')
-            .setDescription('❎ | **10 Saniye İçinde Şarkı Seçmediğiniz İçin seçim İptal Edilmiştir!**.'));
-                    }
+.setColor('0x36393E')
+.setDescription('❎ | **10 Saniye İçinde Şarkı Seçmediğiniz İçin seçim İptal Edilmiştir!**.'));
+}
 					const videoIndex = parseInt(response.first().content);
 					var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
 				} catch (err) {
 					console.error(err);
 					return msg.channel.sendEmbed(new Discord.RichEmbed()
-          .setColor('0x36393E')
-          .setDescription('❎ | YouTubede Böyle Bir Şarkı Yok !**'));
-                }
-            }
+.setColor('0x36393E')
+.setDescription('❎ | YouTubede Böyle Bir Şarkı Yok !**'));
+}
+}
 			return handleVideo(video, msg, voiceChannel);
-      
+
 		}
 	} else if (command === '.gir') {
 		return new Promise((resolve, reject) => {
@@ -661,65 +661,65 @@ client.on('message', async msg => {
 		});
 	} else if (command === '.geç') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
+.setColor('RANDOM')
+.setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-     .setColor('RANDOM')
-     .setTitle('❎ | Şu An Zaten Şarkı Çalmıyorum!'));                                              
+.setColor('RANDOM')
+.setTitle('❎ | Şu An Zaten Şarkı Çalmıyorum!')); 
 		serverQueue.connection.dispatcher.end('**Sıradaki Şarkıya Geçildi!**');
 		return undefined;
 	} else if (command === '.durdur') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
+.setColor('RANDOM')
+.setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-     .setColor('RANDOM')
-     .setTitle('❎ | Şu An Zaten Şarkı Çalmıyorum!'));                                              
+.setColor('RANDOM')
+.setTitle('❎ | Şu An Zaten Şarkı Çalmıyorum!')); 
 		msg.channel.send(`:stop_button: **${serverQueue.songs[0].title}** Adlı Şarkı Durduruldu`);
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('**Şarkı Bitti**');
 		return undefined;
 	} else if (command === '.ses') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
+.setColor('RANDOM')
+.setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-     .setColor('RANDOM')
-     .setTitle('❎ | Çalmayan Müziğin Sesine Bakamam'));                                              
+.setColor('RANDOM')
+.setTitle('❎ | Çalmayan Müziğin Sesine Bakamam')); 
 		if (!args[1]) return msg.channel.sendEmbed(new Discord.RichEmbed()
-   .setTitle(`:loud_sound: Şuanki Ses Seviyesi: **${serverQueue.volume}**`)
-    .setColor('RANDOM'))
+.setTitle(`:loud_sound: Şuanki Ses Seviyesi: **${serverQueue.volume}**`)
+.setColor('RANDOM'))
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle(`🔊 Ses Seviyesi Ayarlanıyor: ${args[1]}`)
-    .setColor('RANDOM'));                             
+.setTitle(`🔊 Ses Seviyesi Ayarlanıyor: ${args[1]}`)
+.setColor('RANDOM')); 
 	} else if (command === '.çalan') {
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("❎ | Şu An Şarkı Çalınmıyor!")
-    .setColor('RANDOM'));
+.setTitle("❎ | Şu An Şarkı Çalınmıyor!")
+.setColor('RANDOM'));
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setTitle("Çalan")                            
-    .addField('Başlık', `[${serverQueue.songs[0].title}](${serverQueue.songs[0].url})`, true)
-    .addField("Süre", `${serverQueue.songs[0].durationm}:${serverQueue.songs[0].durations}`, true))
+.setColor('RANDOM')
+.setTitle("Çalan") 
+.addField('Başlık', `[${serverQueue.songs[0].title}](${serverQueue.songs[0].url})`, true)
+.addField("Süre", `${serverQueue.songs[0].durationm}:${serverQueue.songs[0].durations}`, true))
 	} else if (command === '.sıra') {
-    let index = 0;
+let index = 0;
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("❎ | Şarkı Kuyruğunda Şarkı Bulunmamakta")
-    .setColor('RANDOM'));
-		  return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setColor('RANDOM')
-     .setTitle('Şarkı Kuyruğu')
-    .setDescription(`${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}`))
-    .addField('Şu Anda Çalınan: ' + `${serverQueue.songs[0].title}`);
+.setTitle("❎ | Şarkı Kuyruğunda Şarkı Bulunmamakta")
+.setColor('RANDOM'));
+		 return msg.channel.sendEmbed(new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Şarkı Kuyruğu')
+.setDescription(`${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}`))
+.addField('Şu Anda Çalınan: ' + `${serverQueue.songs[0].title}`);
 	} else if (command === '.durdur') {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setTitle("**:pause_button: Şarkı Durduruldu!**")
-      .setColor('RANDOM'));
+.setTitle("**:pause_button: Şarkı Durduruldu!**")
+.setColor('RANDOM'));
 		}
 		return msg.channel.send('❎ | Şarkı Çalmıyor Şu An');
 	} else if (command === '.devam') {
@@ -727,30 +727,30 @@ client.on('message', async msg => {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setTitle(":arrow_forward: Şarkı Devam Ediyor!")
-      .setColor('RANDOM'));
+.setTitle(":arrow_forward: Şarkı Devam Ediyor!")
+.setColor('RANDOM'));
 		}
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("❎ | Şu An Şarkı Çalınmıyor!")
-    .setColor('RANDOM'));
+.setTitle("❎ | Şu An Şarkı Çalınmıyor!")
+.setColor('RANDOM'));
 	}
-  
+
 
 	return undefined;
 });
 
 async function handleVideo(video, msg, voiceChannel, playlist = false) {
-    const serverQueue = queue.get(msg.guild.id);
-    console.log(video);
-    const song = {
-        id: video.id,
-        title: video.title,
-        url: `https://www.youtube.com/watch?v=${video.id}`,
-    durationh: video.duration.hours,
-    durationm: video.duration.minutes,
-        durations: video.duration.seconds,
-    views: video.views,
-    };
+const serverQueue = queue.get(msg.guild.id);
+console.log(video);
+const song = {
+id: video.id,
+title: video.title,
+url: `https://www.youtube.com/watch?v=${video.id}`,
+durationh: video.duration.hours,
+durationm: video.duration.minutes,
+durations: video.duration.seconds,
+views: video.views,
+};
 	if (!serverQueue) {
 		const queueConstruct = {
 			textChannel: msg.channel,
@@ -772,16 +772,16 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 			console.error("❎ | Şarkı Sisteminde Problem Var Hata Nedeni: ${error}");
 			queue.delete(msg.guild.id);
 			return msg.channel.sendEmbed(new Discord.RichEmbed()
-      .setTitle("❎ | Şarkı Sisteminde Problem Var Hata Nedeni: ${error}")
-      .setColor('RANDOM'))
+.setTitle("❎ | Şarkı Sisteminde Problem Var Hata Nedeni: ${error}")
+.setColor('RANDOM'))
 		}
 	} else {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
-    .setTitle("✅ | ${song.title} Adlı Şarkı Kuyruğa Eklendi!")
-    .setColor('RANDOM'))
+.setTitle("✅ | ${song.title} Adlı Şarkı Kuyruğa Eklendi!")
+.setColor('RANDOM'))
 	}
 	return undefined;
 }
@@ -806,25 +806,26 @@ function play(guild, song) {
 		.on('error', error => console.error(error));
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
-	 serverQueue.textChannel.sendEmbed(new Discord.RichEmbed()                                   
-  .setTitle("🎙 Şarkı Başladı",`https://i.hizliresim.com/RDm4EZ.png`)
-  .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
-  .addField('\nBaşlık', `[${song.title}](${song.url})`, true)
-  .addField("\nSes Seviyesi", `${serverQueue.volume}%`, true)
-  .addField("Süre", `${song.durationm}:${song.durations}`, true)
-  .setColor('RANDOM'));
+	 serverQueue.textChannel.sendEmbed(new Discord.RichEmbed() 
+.setTitle("🎙 Şarkı Başladı",`https://i.hizliresim.com/RDm4EZ.png`)
+.setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
+.addField('\nBaşlık', `[${song.title}](${song.url})`, true)
+.addField("\nSes Seviyesi", `${serverQueue.volume}%`, true)
+.addField("Süre", `${song.durationm}:${song.durations}`, true)
+.setColor('RANDOM'));
 }
 
 /////////////////////////RESİMLİ GİRİŞ ÇIKIŞ///////////////////////
 client.on("guildMemberAdd", async member => {
-         let anan = member.user.avatarURL || member.user.defaultAvatarURL
-    let memberChannel = await db.fetch(`memberChannel_${member.guild.id}`)
-    if (!member.guild.channels.get(memberChannel)) return console.log('memberChannel')
+const fs = require('fs');
+let cogc = JSON.parse(fs.readFileSync("./jsonlar/cogc.json", "utf8"));
+  
+  const hgK = member.guild.channels.get(cogc[member.guild.id].gkanal)
+    if (!hgK) return;
         let username = member.user.username;
-        if (member.guild.channels.get(memberChannel) === undefined || member.guild.channels.get(memberChannel) === null) return;
-        if (member.guild.channels.get(memberChannel).type === "text") {
-            const bg = await Jimp.read("https://cdn.discordapp.com/attachments/450693709076365323/473184528148725780/guildAdd.png");
-            const userimg = await Jimp.read(anan);
+   
+            const bg = await Jimp.read("https://i.postimg.cc/LXrHDVJC/guildAdd.png");
+            const userimg = await Jimp.read(member.user.avatarURL);
             var font;
             if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
             else if (member.user.tag.length > 15) font = await Jimp.loadFont(Jimp.FONT_SANS_64_WHITE);
@@ -833,22 +834,26 @@ client.on("guildMemberAdd", async member => {
             await userimg.resize(362, 362);
             await bg.composite(userimg, 43, 26).write("./img/"+ member.id + ".png");
               setTimeout(function () {
-                    member.guild.channels.get(memberChannel).send(new Discord.Attachment("./img/" + member.id + ".png"));
+                    hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
               }, 1000);
               setTimeout(function () {
                 fs.unlink("./img/" + member.id + ".png");
               }, 10000);
-        }
+  let cogc = JSON.parse(fs.readFileSync("./jsonlar/cogc.json", "utf8"));
+    const hgmK = member.guild.channels.get(cogc[member.guild.id].gkanal)
+    var kullanici = member.tag
+    var sunucu = member.guild.name
+    hgmK.send(`${cogc[member.guild.id].mesaj}`)
     })
 client.on("guildMemberRemove", async member => {
-         let anan = member.user.avatarURL || member.user.defaultAvatarURL
-    let memberChannel = await db.fetch(`memberChannel_${member.guild.id}`)
-    if (!member.guild.channels.get(memberChannel)) return console.log('memberChannel')
+const fs = require('fs');
+let cogc = JSON.parse(fs.readFileSync("./jsonlar/cogc.json", "utf8"));
+    const hgK = member.guild.channels.get(cogc[member.guild.id].gkanal)
+    if (!hgK) return;
         let username = member.user.username;
-        if (member.guild.channels.get(memberChannel) === undefined || member.guild.channels.get(memberChannel) === null) return;
-        if (member.guild.channels.get(memberChannel).type === "text") {
-            const bg = await Jimp.read("https://cdn.discordapp.com/attachments/450693709076365323/473184546477572107/guildRemove.png");
-            const userimg = await Jimp.read(anan);
+         
+                        const bg = await Jimp.read("https://i.postimg.cc/fydSWfw5/123.png");
+            const userimg = await Jimp.read(member.user.avatarURL);
             var font;
             if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
             else if (member.user.tag.length > 15) font = await Jimp.loadFont(Jimp.FONT_SANS_64_WHITE);
@@ -857,13 +862,13 @@ client.on("guildMemberRemove", async member => {
             await userimg.resize(362, 362);
             await bg.composite(userimg, 43, 26).write("./img/"+ member.id + ".png");
               setTimeout(function () {
-                    member.guild.channels.get(memberChannel).send(new Discord.Attachment("./img/"+ member.id + ".png"));
+                    hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
               }, 1000);
               setTimeout(function () {
                 fs.unlink("./img/" + member.id + ".png");
               }, 10000);
-        }
+        
     })
 
 
-client.login(ayarlar.token); 
+client.login(ayarlar.token);

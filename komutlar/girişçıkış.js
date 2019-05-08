@@ -1,27 +1,50 @@
-const Discord = require('discord.js');
-const db = require('quick.db');
-const ayarlar = require("../ayarlar.json")
+const Discord = require('discord.js')
+const fs = require('fs');
+var ayarlar = require('../ayarlar.json');
+let kanal = JSON.parse(fs.readFileSync("././jsonlar/cogc.json", "utf8"));
 
-let prefix = ayarlar.prefix;
+exports.run = async (client, message, args) => {
+if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`Bu komutu kullanabilmek için **Yönetici** iznine sahip olmalısın!`);
+  
+  let channel = message.mentions.channels.first()
+  
+    if (!channel) {
+        const embed = new Discord.RichEmbed()
+        .setColor("RED")
+          .setTitle(`Yanlış Kullanım!`)
+          .addField(`Doğru Kullanımı`, `${ayarlar.prefix}giriş-çıkış-ayarla <#kanal>`)
+        message.channel.send({embed})
+        return
+    }
 
-exports.run = (client, message, params, args) => {
-     if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(':x: Giriş Çıkış Komutunu Kullanmak İçin `Yönetici` yetkisine sahip olman gerek.')
-     let giriş = message.mentions.channels.first();
-     if (!giriş) return message.channel.send(':x: Kanal Etiketlemen Lazım. `${prefix}girişçıkış #kanal`')
-     db.set(`giriş_${message.guild.id}`, message.mentions.channels.first().id).then(i => {
-        message.channel.send(`:white_check_mark:  Giriş Çıkış Kanalı Artık, <#${i}> Olarak Ayarlandı.`)    
-    })         
-};
+    if(!kanal[message.guild.id]){
+        kanal[message.guild.id] = {
+            gkanal: channel.id
+        };
+    }
+  
+    fs.writeFile("././jsonlar/cogc.json", JSON.stringify(kanal), (err) => {
+        console.log(err)
+    })
+  
+    const embed = new Discord.RichEmbed()
+    .setDescription(`» Giriş Çıkış kanalı başarıyla ${channel} olarak ayarlandı!`)
+    .setColor("GREEN")
+    message.channel.send({embed})
+  
 
+}
+    
 exports.conf = {
- enabled: true,
- guildOnly: false,
- aliases: ['giriş-çıkış'],
- permLevel: 0
-};
+    enabled: true,
+    guildOnly: false,
+    aliases: ['giriş-çıkış-belirle',"girişçıkış","hoşgeldin","hoşgeldin-ayarla"],
+    permLevel: 0
+}
 
 exports.help = {
- name: 'girişçıkış',
- description: 'sunucunun giriş çıkışlarını ayarlar',
- usage: 'girişçıkış'
-};
+    name: 'giriş-çıkış-ayarla',
+    description: 'Giriş çıkış kanalını ayarlar.',
+    usage: 'giriş-çıkış-ayarla <#kanal>'
+}
+//CODERS KOD PAYLAŞIM VE BOT BARINDIRMA 
