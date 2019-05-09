@@ -267,11 +267,27 @@ else channel.guild.channels.get(membermodChannel).send(embed) }
 });
 
 
-///////////////////KÜFÜR ENGELLEME///////////////////////
-//client.on("message", async msg => {
-//db.fetch(`kufur_${msg.guild.id}`).then(i => {
-//if (i == 'Açık') {
-//const kufur = ["fuck", "FUCK", "SHIT", "shit", "PORN", "porn", "xnxx", "XNXX","amk","aq","sik","siktir","aq","amk","oç","oruspu","orusbu","anan","sikerler","sikerim","s1kerler","s1kerim","s1ker1m","wtf","AMK","AQ","ORUSBU","ORUSPU","SİKERLER",,"GAY","GÖT","ANAN","PORNHUB.COM","pornhub.com","brazzers","BRAZZERS","ANANI","ananı","ananı sikerim","ananı sik","anamı sik","ANANI SİK","AN
+///////////////////KÜFÜR ENGELLEME/////////////////////
+client.on("message", async msg => {
+  db.fetch(`kufur_${msg.guild.id}`).then(i => {
+if (i == 'Açık') {
+        const kufur = ["fuck", "FUCK", "SHIT", "shit", "PORN", "porn", "xnxx", "XNXX","amk","aq","sik","siktir","a q","a mk","oç","oruspu","orusbu","anan","sikerler","sikerim","s1kerler","s1kerim","s1ker1m","wtf","AMK","AQ","ORUSBU","ORUSPU","SİKERLER",,"GAY","GÖT","ANAN","PORNHUB.COM","pornhub.com","brazzers","BRAZZERS","ANANI","ananı","ananı sikerim","ananı sik","anamı sik","ANANI SİK","ANANI SİKERİM","şerefsiz","Şerefsiz","ŞEREFSİZ","orospu","orospu çocuğu","OC","Piç","PİÇ","yavşak","YAVŞAK","ibne","ipne","İBNE","İPNE","amına korum","pi.ç","piç"];
+        if (kufur.some(word => msg.content.includes(word))) {
+          try {
+             if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
+
+                  return msg.reply(`Küfür Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+             }              
+          } catch(err) {
+            console.log(err);
+          }
+        } } else if (i == 'Kapalı') {
+ 
+}
+   
+})
+});
 
 
 /////////////////////////REKLAM ENGELLEME/////////////////////////
