@@ -2,7 +2,8 @@ const db = require('quick.db')
 const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
-  if (!args[0]) return message.channel.send('✅Aç yada Kapat yazmalısın! Örnek: .eklamengel aç'))  if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('`SUNUCUYU_YÖNET` yetkisine sahip olmalısın!')
+  if (!args[0]) return message.channel.send('✅Aç yada Kapat yazmalısın! Örnek: i!reklamengel aç')
+  if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('`SUNUCUYU_YÖNET` yetkisine sahip olmalısın!')
   
   if (args[0] == 'aç') {
     db.set(`reklam_${message.guild.id}`, 'Açık').then(i => {
@@ -19,12 +20,12 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['reklam-engel','reklam engelleme'],
-  permLevel: 0
+  aliases: ['reklam-engel','reklamengelleme','reklam-engelleme'],,  permLevel: 0
 };
 
 exports.help = {
   name: 'reklamengel',
   description: 'reklamengel',
-  usage: 'reklamengel',
-}5
+  usage: 'reklamengel'
+};
+U
