@@ -275,21 +275,28 @@ else channel.guild.channels.get(membermodChannel).send(embed) }
 
 
 /////////////////////////REKLAM ENGELLEME/////////////////////////
-
 client.on("message", async msg => {
   db.fetch(`reklam_${msg.guild.id}`).then(i => {
-if (i == 'aciik') {
-
-    const creklams = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl"];
-       // if (reklam.some(word => msg.content.includes(word))) {
+if (i == 'Açık') {
+        
+    const reklam = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ". com"];
+        if (reklam.some(word => msg.content.includes(word))) {
           try {
              if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
-               
 
-                  return msg.reply(`Bu Sunucuda Reklamlar ${client.user.username} Tarafından Engelleniyor! 👑`).then(msg => msg.delete(3000));
-             }
-          } c
+                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+             }              
+          } catch(err) {
+            console.log(err);
+          }
+        } } else if (i == 'Kapalı') {
+ 
+}
+   
+})
+});
+
 
 
 
