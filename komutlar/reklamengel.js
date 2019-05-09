@@ -20,7 +20,8 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['reklam-engel','reklamengelleme','reklam-engelleme'],,  permLevel: 0
+  aliases: ['reklam-engel','reklamengelleme','reklam-engelleme'],
+  permLevel: 0
 };
 
 exports.help = {
@@ -28,4 +29,3 @@ exports.help = {
   description: 'reklamengel',
   usage: 'reklamengel'
 };
-U

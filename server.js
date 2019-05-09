@@ -277,7 +277,7 @@ if (i == 'Açık') {
              if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
 
-                  return msg.reply(`Küfür Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+                  return msg.reply(`Küfür Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(5000));
              }              
           } catch(err) {
             console.log(err);
@@ -301,7 +301,7 @@ if (i == 'Açık') {
              if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
 
-                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(3000));
+                  return msg.reply(`Reklam Tespit Edildi! ${ayarlar.uyarı}`).then(msg => msg.delete(5000));
              }              
           } catch(err) {
             console.log(err);
@@ -805,7 +805,7 @@ else if (member.user.tag.length > 15) font = await Jimp.loadFont(Jimp.FONT_SANS_
 else font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
 await bg.print(font, 430, 170, member.user.tag);
 await userimg.resize(300, 300);
-await bg.composite(userimg, 50, 35).write("./img/"+ member.id + ".png");
+await bg.composite(userimg, 50, 20).write("./img/"+ member.id + ".png");
 setTimeout(function () {
 hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
 }, 1000);
