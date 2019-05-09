@@ -13,7 +13,7 @@ const queue = new Map();
 let sayac = JSON.parse(fs.readFileSync("./ayarlar/sayac.json", "utf8")); 
 let linkEngel = JSON.parse(fs.readFileSync("./jsonlar/linkEngelle.json", "utf8"));
 require('./util/eventLoader')(client);
-var emoji = client.emojis.get("576106560636583996")
+var emoji = client.emojis.get("576092404528971776")
 var prefix = ayarlar.prefix;
 const log = message => {
 console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
@@ -878,7 +878,7 @@ client.on("guildMemberRemove", async member => {
   try {
     let giriscikiskanalID = giriscikis[member.guild.id].kanal;
     let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
-    giriscikiskanali.send(`:loudspeaker: ${member.user.tag}, aramızdan ayrıldı, \**${sayac[member.guild.id].sayi}\** kişi olmamıza \**${sayac[member.guild.id].sayi - member.guild.memberCount}\** kişi kaldı!`);
+    giriscikiskanali.send(`:loudspeaker: ${emoji} ${member.user.tag}, aramızdan ayrıldı, \**${sayac[member.guild.id].sayi}\** kişi olmamıza \**${sayac[member.guild.id].sayi - member.guild.memberCount}\** kişi kaldı!`);
   } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
     return console.log(e)
   }
@@ -900,7 +900,7 @@ client.on("guildMemberAdd", async member => {
   try {
     let giriscikiskanalID = giriscikis[member.guild.id].kanal;
     let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
-    giriscikiskanali.send(`:loudspeaker:${emoji} ${member.user.tag}, aramıza katıldı **${sayac[member.guild.id].sayi}** kişi olmamıza **${sayac[member.guild.id].sayi - member.guild.memberCount}** kişi kaldı!` );
+    giriscikiskanali.send(`:loudspeaker: ${emoji} ${member.user.tag}, aramıza katıldı **${sayac[member.guild.id].sayi}** kişi olmamıza **${sayac[member.guild.id].sayi - member.guild.memberCount}** kişi kaldı!` );
   } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
     return console.log(e)
   }
