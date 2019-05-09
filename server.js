@@ -281,7 +281,7 @@ client.on("message", async msg => {
 if (i == 'aciik') {
 
     const creklams = ["discordapp", ".com", ".net", ".xyz", ".tk", "gulu", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl"];
-        if (reklam.some(word => msg.content.includes(word))) {
+       // if (reklam.some(word => msg.content.includes(word))) {
           try {
              if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
@@ -292,7 +292,7 @@ if (i == 'aciik') {
           } catch(err) {
             console.log(err);
           }
-        } } else if (i == 'kapalii') {
+        //} } else if (i == 'kapalii') {
 
 }
 
@@ -320,39 +320,6 @@ message.delete()
 
 ///////////////////////////TEMİZLEME////////////////////////////
 
-client.on('message', msg => {
-if (msg.content.toLowerCase() === '.çöp') {
-if (msg.channel.type === 'dm') {
-const ozelmesajuyari = new Discord.RichEmbed()
-.setColor(0xdcff00)
-.setTimestamp()
-.setAuthor(msg.author.username, msg.author.avatarURL)
-.addField('⚠ Uyarı ⚠', 'Bu komutu özel mesajlarda kullanamazsın.')
-msg.author.sendEmbed(ozelmesajuyari); }
-if (msg.channel.type !== 'dm') {
-if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
-if (msg.author.id !== ayarlar.yapimci) {
-const mesajlariyonet = new Discord.RichEmbed()
-.setColor(0xFF0000)
-.setTimestamp()
-.setAuthor(msg.author.username, msg.author.avatarURL)
-.addField('⚠ Uyarı ⚠', 'Bu komutu kulllanmak için `Mesajları Yönet` iznine sahip olmalısın.')
-return msg.author.sendEmbed(mesajlariyonet);
-}}
-msg.channel.bulkDelete(100);
-msg.channel.bulkDelete(100);
-msg.channel.bulkDelete(100);
-msg.channel.bulkDelete(100);
-msg.channel.bulkDelete(100); //500 mesaj gg
-const sohbetsilindi = new Discord.RichEmbed()
-.setColor(0x35ff00)
-.setTimestamp()
-.addField('Eylem:', '**Sohbet silme**')
-.addField('Yetkili:', '` ' + msg.author.username + '`')
-.addField('Silinen Mesaj Sayısı:', '»'+ ' **500** ' + '«')
-.addField('Sonuç:', '`Başarılı`'+ ' ✅ ')
-return msg.channel.sendEmbed(sohbetsilindi).then(msg => msg.delete(2900));
-}}});
 
 /////////////////////SUNUCU KURMA/////////////////////
 client.on('message', async message => {
