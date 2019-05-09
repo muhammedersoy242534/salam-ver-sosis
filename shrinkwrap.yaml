@@ -4,6 +4,7 @@ dependencies:
   chalk: 2.4.2
   cleverbot.io: 1.0.4
   common-tags: 1.8.0
+  discord-anti-spam-tr: 0.7.4
   discord.js: 11.4.2
   express: 4.16.4
   ffmpeg: 0.0.4
@@ -1038,6 +1039,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
+  /discord-anti-spam-tr/0.7.4:
+    dev: false
+    resolution:
+      integrity: sha512-LSk5KjdP0FVWH1Usx5tABMEYTsWivWeR/WxUklEKaPYNXKgbytMbwEd2T6ZB5fJEGwzMZedz4SccIGWUJNWJnw==
   /discord.js/11.4.2:
     dependencies:
       long: 4.0.0
@@ -3582,6 +3587,7 @@ specifiers:
   chalk: ^2.4.2
   cleverbot.io: ^1.0.4
   common-tags: ^1.8.0
+  discord-anti-spam-tr: ^0.7.4
   discord.js: ^11.4.2
   express: ^4.16.4
   ffmpeg: ^0.0.4
