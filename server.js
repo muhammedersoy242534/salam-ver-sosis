@@ -289,15 +289,7 @@ if (i == 'aciik') {
 
                   return msg.reply(`Bu Sunucuda Reklamlar ${client.user.username} Tarafından Engelleniyor! 👑`).then(msg => msg.delete(3000));
              }
-          } catch(err) {
-            console.log(err);
-          }
-        //} } else if (i == 'kapalii') {
-
-}
-
-})
-});
+          } c
 
 
 
@@ -318,8 +310,14 @@ message.delete()
 }
 });
 
-///////////////////////////TEMİZLEME////////////////////////////
+///////////////////////////OTOROL////////////////////////////
+client.on("guildMemberAdd", async (member) => {
+      let autorole =  JSON.parse(fs.readFileSync("./otorol.json", "utf8"));
+      let role = autorole[member.guild.id].sayi
 
+      member.addRole(role)
+
+});
 
 /////////////////////SUNUCU KURMA/////////////////////
 client.on('message', async message => {

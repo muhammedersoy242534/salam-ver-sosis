@@ -34,7 +34,7 @@ exports.run = async (bot, message, args) =>
 	})
 
 	const embed = new Discord.RichEmbed()
-		.setDescription(`:white_check_mark: Otorol başarıyla ${args[0]} olarak ayarlandı! \nOtorol Mesaj kanalı başarıyla ${mentionedChannel} olarak ayarlandı.\n\nOto Rol'ü kapatabilmek için **//kapatotorol** yazabilirsiniz!`)
+		.setDescription(`:white_check_mark: Otorol başarıyla ${args[0]} olarak ayarlandı! \nOtorol Mesaj kanalı başarıyla ${mentionedChannel} olarak ayarlandı.\n\nOto Rol'ü kapatabilmek için **.kapatotorol** yazabilirsiniz!`)
 		.setColor("RANDOM")
 		.setTimestamp()
 	message.channel.send({embed})
