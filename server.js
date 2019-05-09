@@ -831,8 +831,8 @@ if (member.user.tag.length < 15) font = await Jimp.loadFont(Jimp.FONT_SANS_128_W
 else if (member.user.tag.length > 15) font = await Jimp.loadFont(Jimp.FONT_SANS_64_WHITE);
 else font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
 await bg.print(font, 430, 170, member.user.tag);
-await userimg.resize(362, 362);
-await bg.composite(userimg, 43, 26).write("./img/"+ member.id + ".png");
+await userimg.resize(300, 300);
+await bg.composite(userimg, 50, 20).write("./img/"+ member.id + ".png");
 setTimeout(function () {
 hgK.send(new Discord.Attachment("./img/" + member.id + ".png"));
 }, 1000);
