@@ -973,7 +973,7 @@ antispam(client, {
   maxSpamUyarı: 8,//Bir kullanıcının uyarılmadan önce bir zaman dilimi içinde gönderebileceği maksimum kopya sayısı
   maxSpamBan: 12, //Bir kullanıcının yasaklanmadan önce bir zaman diliminde gönderebildiği maksimum kopya sayısı
   zaman: 7, // Spamdan sonraki zaman
-  rolİsimi: "spam-susturulmuş" // Spam Atan Kullanıcılar Verilecek Röl
+  rolİsimi: "spam" // Spam Atan Kullanıcılar Verilecek Röl
 });
 
 client.login(ayarlar.token);
