@@ -878,7 +878,7 @@ client.on("guildMemberRemove", async member => {
   try {
     let giriscikiskanalID = giriscikis[member.guild.id].kanal;
     let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
-    giriscikiskanali.send(`:loudspeaker: ${emoji} ${member.user.tag}, aramızdan ayrıldı, \**${sayac[member.guild.id].sayi}\** kişi olmamıza \**${sayac[member.guild.id].sayi - member.guild.memberCount}\** kişi kaldı!`);
+    giriscikiskanali.send(`:loudspeaker: <:emoji_1:576092404528971776> ${member.user.tag}, aramızdan ayrıldı, \**${sayac[member.guild.id].sayi}\** kişi olmamıza \**${sayac[member.guild.id].sayi - member.guild.memberCount}\** kişi kaldı!`);
   } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
     return console.log(e)
   }
@@ -900,7 +900,7 @@ client.on("guildMemberAdd", async member => {
   try {
     let giriscikiskanalID = giriscikis[member.guild.id].kanal;
     let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
-    giriscikiskanali.send(`:loudspeaker: ${emoji} ${member.user.tag}, aramıza katıldı **${sayac[member.guild.id].sayi}** kişi olmamıza **${sayac[member.guild.id].sayi - member.guild.memberCount}** kişi kaldı!` );
+    giriscikiskanali.send(`:loudspeaker: <:emoji_1:576092404528971776>${member.user.tag}, aramıza katıldı **${sayac[member.guild.id].sayi}** kişi olmamıza **${sayac[member.guild.id].sayi - member.guild.memberCount}** kişi kaldı!` );
   } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
     return console.log(e)
   }
