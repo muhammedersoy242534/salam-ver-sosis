@@ -13,7 +13,6 @@ const queue = new Map();
 let sayac = JSON.parse(fs.readFileSync("./ayarlar/sayac.json", "utf8")); 
 let linkEngel = JSON.parse(fs.readFileSync("./jsonlar/linkEngelle.json", "utf8"));
 require('./util/eventLoader')(client);
-var emoji = client.emojis.get(":emoji_1:576092404528971776")
 var prefix = ayarlar.prefix;
 const log = message => {
 console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
