@@ -13,35 +13,30 @@ exports.run = async (client, message, args) => {
 
     var voiceChannel = message.member.voiceChannel;
         
-    const a = new RichEmbed()
+    const err1 = new RichEmbed()
     .setColor("RANDOM")
     .setDescription(`Bir sesli kanalda değilsin.`)  
-  if (!voiceChannel) return message.channel.send(a)
-
-  if (serverQueue && serverQueue.playing) {
-    serverQueue.playing = false;
-    serverQueue.connection.dispatcher.pause();
-        const asjdhsaasjdhaadssad = new RichEmbed()
-    .setColor("RANDOM")
-    .setDescription(`Şarkı başarıyla duraklatıldı!`)
-      return message.channel.send(asjdhsaasjdhaadssad);
-    }
-    const b = new RichEmbed()
+    if (!voiceChannel) return message.channel.send(err1);
+    const err2 = new RichEmbed()
     .setColor("RANDOM")
     .setDescription(`Şuanda herhangi bir şarkı çalmıyor.`)
-    if (!serverQueue) return message.channel.send(b);
-
+    if (!serverQueue) return message.channel.send(err2);
+    serverQueue.songs = [];
+    const songEnd = new RichEmbed()
+    .setColor("RANDOM")
+    .setDescription(`Şarkı başarıyla durduruldu ve odadan ayrıldım!`)
+    serverQueue.connection.dispatcher.end('');
+    message.channel.send(songEnd);
 };
 
 exports.conf = {
     enabled: true,
-    aliases: ['pause'],
+    aliases: ['stop'],
     permLevel: 0
 };
 
 exports.help = {
-    name: 'duraklat',
-    description: 'Çalan şarkıyı duraklatır.',
-    usage: 'duraklat'
+    name: 'durdur',
+    description: 'Oynatılan/çalan şarkıyı kapatır.',
+    usage: 'durdur'
 };
-   

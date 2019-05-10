@@ -4,6 +4,7 @@ const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
+client.queue = new Map()
 const db = require('quick.db');
 const Jimp = require('jimp');
 const YouTube = require('simple-youtube-api');
