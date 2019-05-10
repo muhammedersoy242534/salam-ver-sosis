@@ -548,8 +548,6 @@ message.channel.send("⍫ Gerekli Roller Ve Odalar Kuruldu 🌹")
 }
 });
 
-//////////////////////MÜZİK KOMUTU////////////////////////
-
 
 /////////////////////////RESİMLİ GİRİŞ ÇIKIŞ///////////////////////
 client.on("guildMemberAdd", async member => {
@@ -622,4 +620,6 @@ delete sayac[message.guild.id];
 fs.writeFile("./ayarlar/sayac.json", JSON.stringify(sayac), (err) => {
 console.log(err)
 })
+}
+};
 client.login(ayarlar.token);
