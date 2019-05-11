@@ -11,7 +11,7 @@ const Discord = require('discord.js');
 
      new Discord.RichEmbed()
 
-     .addField(`:x: yazı yazman gerek :x:`)).then(m => m.delete(5000));
+     .addField(`:x: :576092404528971776: yazı yazman gerek :x:`)).then(m => m.delete(5000));
 
      console.log("oylama komutu " + message.author.username + '#' + message.author.discriminator + " tarafından kullanıldı.")
      message.channel.sendEmbed(
