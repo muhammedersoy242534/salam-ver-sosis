@@ -1,32 +1,33 @@
 const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
 
+let botid = ('') //bu yere botun id'sini yapıştırın.
+//eğer botunuz dbl(discord bot list) de yoksa Bota Oy Ver (Vote) olmucaktır.
 
-exports.run = function(client, message) {
-const embed = new Discord.RichEmbed()
-.setColor('RANDOM')
-.setThumbnail("https://images-ext-2.discordapp.net/external/SuLhN3wmdmorQqYUD68rsK5Is-XEkOLdxDTnFuNKoJ0/https/78.media.tumblr.com/10b366f294d47b40d857d6e47872d0dc/tumblr_ntubqoYYsF1sqwlqgo3_250.gif")
-.setTitle('» Komutlar;')
-.setTimestamp()
-.addField('» Eğlence Komutları', `.eğlence`)
-.addField('» Moderatör Komutları', `.moderatör`)
-.addField('» Genel Komutlar', `.genel`)
-.addField('» Ekstra Komutlar', `.ekstra`)
-.addField('» Müzik Komutları', `.müzik`)
-.setFooter('© 2019 Boss Bot', client.user.avatarURL)
-.setTimestamp()
-.setThumbnail(client.user.avatarURL)
-message.channel.send(embed)
+exports.run = (client, message, args) => {
+    const embed = new Discord.RichEmbed()
+        .setAuthor(`${client.user.username} `, client.user.avatarURL)
+        .setColor('0x36393E')
+        .setTitle(`${client.user.username} - Komutlar`)
+        .setDescription(`:white_small_square: | **${ayarlar.prefix}yetkili** Moderasyon Komutları.\n :white_small_square: | **${ayarlar.prefix}kullanıcı** Kullanıcıya Komutları.\n :white_small_square: |  **${ayarlar.prefix}eğlence** Eğlence Komutları.\n :white_small_square: | **${ayarlar.prefix}ekstra** Ekstra Komutları.\n :white_small_square: | **${ayarlar.prefix}müzik** Müzik Komutları.\n`)
+        .setThumbnail(client.user.avatarURL)
+        .addField(`» Linkler`, `[Bot Davet Linki](https://discordapp.com/oauth2/authorize?client_id=${botid}&sco&permissions=8) **|** [Destek Sunucusu](https://dis.gg/BAĞLANTI) **|** [Bota Oy Ver (Vote)](https://dirdbots.org/bot/${botid}/vote) **|
+        .setFooter(`${message.author.username} Tarafından İstendi.`, message.author.avatarURL)
+    return message.channel.sendEmbed(embed);
+  
+  
 };
 
 exports.conf = {
   enabled: true,
-  guildOnly: false, 
-  aliases: ["help", "h", "y", "komutlar"], 
-  permLevel: 0 
+  guildOnly: false,
+  aliases: ['help'],
+  permLevel: 0,
 };
 
 exports.help = {
   name: 'yardım',
-  description: 'Tüm komutları gösterir.',
-  usage: 'yardım'
+  description: '',
+  usage: ''
 };
+   
