@@ -21,7 +21,7 @@ var joyturk = "http://17733.live.streamtheworld.com/JOY_TURK_SC";
 exports.run = function (bot, message, args) {
 		let mesaj = args.slice(0).join(' ');
 if(!mesaj) {
-	message.reply("Lütfen Herhangi Bir Radyo Numarası Seçiniz.\n\n__Radyo Kanalları__\n\n**[1] - JoyTürk**\n**[2] - SlowTürk**\n**[3] - Fenomen FM**\n**[4] - Metro**\n**[5] - Number1**\n**[6] - PowerTürk**\n\n\nÖrnek = **" + prefix + "radyo**\nVe Ardından Sayı\nÖrnek = **" + prefix + "radyo 2**\nCodAre Mustafa Arda Gelişmiş Türk Radyo Sistemi")
+	message.reply("Lütfen Herhangi Bir Radyo Numarası Seçiniz.\n\n__Radyo Kanalları__\n\n**[1] - JoyTürk**\n**[2] - SlowTürk**\n**[3] - Fenomen FM**\n**[4] - Metro**\n**[5] - Number1**\n**[6] - PowerTürk**\n\n\nÖrnek = **" + [prefix] + "radyo**\nVe Ardından Sayı\nÖrnek = **" + [prefix] + "radyo 2**\nBossGelişmiş Türk Radyo Sistemi")
 }		
     if (!message.member.voiceChannel) return message.reply("Radyo Komutunu Kullanabilmek İçin Lütfen Sesli Bir Kanala Giriş Yapınız.");
 
