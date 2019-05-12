@@ -1,18 +1,20 @@
-const Discord = require("discord.js");
-const ms = require("ms");
+const Discord = require("discord.js")
+const ms = require("ms")
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermissions ('KICK_MEMBERS')) return message.channel.send("Komudu Kullanmak İçin Kick Members Yetkisine Sahip Olmalısın.")
+    if (!message.member.hasPermissions ('KICK_MEMBERS')) return message.channel.send("Yapmak İçin Kick Members Yetkisine Sahip Olmalısın.")
     const mod = message.author;
     let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if (!user) return message.channel.send(`❌ | Kullanıcıyı Bulamıyorum`)
+    if (!user) return message.channel.sendEmbed(new Discord.RichEmbed().setColor('RANDOM').setAuthor("Hata").setDescription(`Kullanıcı Bulunamadı`))
     let reason = message.content.split(" ").slice(2).join(" ");
-    if (!reason) return message.channel.sendEmbed(new Discord.RichEmbed().setAuthor('Hata').setDecription('Mute Sebebini Yazman Gerek').setColor('RANDOM'))
+    if (!user.roles.find(`name`, "Muted")) return message.channel.sendEmbed(new Discord.RichEmbed().setColor('RANDOM').setTitle('Kişi Mutelenmemiş'))
+    if (!reason) return message.channel.sendEmbed(new Discord.RichEmbed().setColor('RANDOM').setAuthor("Hata").setDescription(`Unmute Sebebini Yazmalısın`))
     let muterole = message.guild.roles.find(`name`, "Muted");
-  if (!muterole) {
+
+    if (!muterole) {
         try {
-            muterole = await message.guild.createRole({
+           muterole = await message.guild.createRole({
                 name: "Muted",
                 color: "#000000",
                 permissions: []
@@ -27,17 +29,17 @@ module.exports.run = async (bot, message, args) => {
             console.log(e.stack);
         }
     }
+  
 
-    await (user.addRole(muterole.id));
+
+     await (user.removeRole(muterole.id));
     const muteembed = new Discord.RichEmbed()
-            .setAuthor('Eylem: Mute')
+            .setAuthor('Eylem: Unmute')
             .addField('Kullanıcı', `<@${user.id}>`)
             .addField('Sebep', `${reason}`)
             .addField('Moderatör', `${mod}`)
             .setColor('RANDOM')
         message.channel.send(muteembed)
-  
-  
 }
 
 
@@ -46,8 +48,8 @@ exports.conf = {
     permLevel: 2
 };
 
-module.exports.help = {
-    name: "mute",
-    description: "Etiketlenen Kişiye Mute Atar",
-    usage: "mute [kullanıcı] [sebep]"
+exports.help = {
+    name: "unmute",
+    description: "Etiketlenen Kişinin Mutesini Geri Alır",
+    usage:  "unmute [kullanıcı] [sebep]",
 }
