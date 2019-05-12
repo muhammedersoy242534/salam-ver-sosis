@@ -1,69 +1,56 @@
 const Discord = require('discord.js');
-const fs = require('fs');
+const db = require('quick.db');
+const client = new Discord.Client();
 
 exports.run = (client, message, args) => {
-
-  const db = require('quick.db');
-  
-  var s = 'tr'
-  var a = client.commands.get('yasakla').help.name
-  var islem = "Yasaklama"
-    if(db.has(`dil_${message.guild.id}`) === true) {
-        var s = 'en'
-        var a = client.commands.get('yasakla').help.enname
-        var islem = "Ban"
-    }
-    const dil = client[s]
-    const o = a
-    
-  if (!message.guild.members.get(client.user.id).hasPermission("BAN_MEMBERS")) return message.reply(dil.izin)
-  if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply(`Bu komutu kullanabilmek için **Üyeleri Yasakla** iznine sahip olmalısın!`);
-  
-  let user = message.mentions.users.first();
+  if (!message.guild) {
+  const ozelmesajuyari = new Discord.RichEmbed()
+  .setColor(0xFF0000)
+  .setTimestamp()
+  .setAuthor(message.author.username, message.author.avatarURL)
+  .addField(':warning: Uyarı :warning:', '`ban` adlı komutu özel mesajlarda kullanamazsın.')
+  return message.author.sendEmbed(ozelmesajuyari); }
+  let guild = message.guild
   let reason = args.slice(1).join(' ');
-  let modLog = JSON.parse(fs.readFileSync("./jsonlar/mLog.json", "utf8"));
-  if (db.has(`mLog_${message.guild.id}`) === false) return message.reply(dil.ayarlar.errors.mlogayarsiz);
-  let modlog = message.guild.channels.get(db.fetch(`mLog_${message.guild.id}`).replace("<#", "").replace(">", ""));
-  if (message.mentions.users.size < 1) return message.reply(dil.argerror.replace("{prefix}", client.ayarlar.prefix).replace("{komut}", o));
-  if (reason.length < 1) return message.reply(dil.argerror.replace("{prefix}", client.ayarlar.prefix).replace("{komut}", o));
-  if (user.id === message.author.id) return message.reply(dil.noyou);
-  if (user.highestRole.calculatedPosition > message.member.highestRole.calculatedPosition - 1) {
-			return message.reply(`Bu kişinin senin rollerinden/rolünden daha yüksek rolleri/rolü var.`);
-		}
-  if (!message.guild.member(user).bannable) return message.channel.send(`Bu kişiyi sunucudan yasaklayamıyorum çünkü \`benden daha yüksek bir role sahip\` ya da \`bana gerekli yetkileri vermedin\`.`);
-  
-  const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .addField(dil.modlog.islem, islem)
-  .addField(dil.modlog.kisi, `${user.tag} (${user.id})`)
-  .addField(dil.modlog.yetkili, `${message.author.username}#${message.author.discriminator}`)
-  .addField(dil.modlog.sebep, "```" + reason + "```")
-  modlog.send(embed);
-  
-   if (!message.guild.member(user).bannable) return message.reply('Yetkilileri yasaklayamam!');
+  let user = message.mentions.users.first();
+  let modlog = message.guild.channels.get(db.fetch(`mlog_${message.guild.id}`));
+ // const kanal = message.guild.channels.find('id', modlog)
+  if (db.has(`mlog_${message.guild.id}`) === false) return message.channel.send(new Discord.RichEmbed()
+    .setDescription(`<:hayir:553878810756513802> | Bu komutu kullanmak için öncelikle .mod-log-ayarla #kanal komutu ile bir kanal belirleyin`)
+     .setColor("RED"))                                                                           
+  if (reason.length < 1) return message.reply('Ban sebebini yazmalısın.');
+  if (message.mentions.users.size < 1) return message.reply('Kimi banlayacağını yazmalısın.').catch(console.error);
+
+  if (!message.guild.member(user).bannable) return message.reply('Yetkilileri banlayamam.');
   message.guild.ban(user, 2);
   
   const embed2 = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription(`${dil.basarili}`)
+  .setDescription(`İşlem başarılı!`)
   message.channel.send(embed2)
     
+
+  const embed = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .addField('Eylem:', 'Sunucudan Yasaklama :bangbang: ')
+    .addField('Yasaklanan Kullanıcı:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('Yasaklayan Yetkili:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Yasaklama Sebebi:', reason);
+    modlog.send(embed);
+  
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: [],
-  permLevel: 3,
-    kategori: "moderasyon",
-  category: "moderation"
+  permLevel: 2,
+  kategori: "yetkili"
 };
 
 exports.help = {
   name: 'ban',
   description: 'İstediğiniz kişiyi sunucudan yasaklar.',
-  usage: 'yasakla <@kullanıcı> <sebep>',
-  enname: 'ban',
-  endescription: 'Bans the given user.',
-  enusage: 'ban <@user> <reason>'
+  usage: 'ban [kullanıcı] [sebep]'
 };
