@@ -11,6 +11,7 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube('AIzaSyCkT_L10rO_NixDHNjoAixUu45TVt0ES-s');
 const queue = new Map();
+const eco = require('discord-economy'); 
 let sayac = JSON.parse(fs.readFileSync("./ayarlar/sayac.json", "utf8")); 
 let linkEngel = JSON.parse(fs.readFileSync("./jsonlar/linkEngelle.json", "utf8"));
 require('./util/eventLoader')(client);
@@ -625,4 +626,8 @@ console.log(err)
 })
 }}
 })
+
+/////////////////////
+
+
 client.login(ayarlar.token);

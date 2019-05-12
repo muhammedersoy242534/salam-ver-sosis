@@ -13,7 +13,7 @@
     "chalk": "^2.4.2",
     "cleverbot.io": "^1.0.4",
     "common-tags": "^1.8.0",
-    "discord.js": "^11.4.2",
+    "discord.js": "^11.5.0",
     "express": "^4.16.4",
     "ffmpeg": "^0.0.4",
     "gulp-math": "^1.0.0",
@@ -31,7 +31,8 @@
     "ytdl-core": "^0.29.0",
     "canvas-constructor": "^3.0.0",
     "canvas": "^2.5.0",
-    "discord-anti-spam-tr": "^0.7.4"
+    "discord-anti-spam-tr": "^0.7.4",
+    "discord-economy": "^1.1.6"
   },
   "engines": {
     "node": "8.x"
