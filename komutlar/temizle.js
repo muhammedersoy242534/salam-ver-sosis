@@ -1,47 +1,43 @@
 const Discord = require('discord.js');
-let owner = "513738002183356425"
+//const ayarlar = require('../ayarlar.json');
 
-
-exports.run = function(client, message, args) {
-  if (!message.guild) {
-  const ozelmesajuyari = new Discord.RichEmbed()
-  .setColor(0xD97634)
-  .setTimestamp()
-  .setAuthor(message.author.username, message.author.avatarURL)
-  .addField(':warning: Uyarı :warning:', '`temizle` adlı komutu özel mesajlarda kullanamazsın.')
-  return message.author.sendEmbed(ozelmesajuyari); }
-  if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-    const botunmesajyonet = new Discord.RichEmbed()
-    .setColor(0xD97634)
-    .setTimestamp()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .addField(':warning: Uyarı :warning:', 'Mesajları silebilmen için `Mesajları Yönet` yetkisine sahip olmalısın.')
-    return message.author.sendEmbed(botunmesajyonet);
-  }
-  let messagecount = parseInt(args.join(' '));
-  message.channel.fetchMessages({
-    limit: messagecount
-  }).then(messages => message.channel.bulkDelete(messages));
-    const sohbetsilindi = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setTimestamp()
-    .addField('**Eylem: **', 'Sohbet silme')
-    .addField('**Yetkili: **', message.author.username)
-    .addField('**Sonuç: **', `Başarılı`)
-    .addField('**Kaç Adet**', + messagecount)
-    return message.channel.sendEmbed(sohbetsilindi).then(msg => msg.delete(5000));
-    console.log("**Sohbet " + message.member + " tarafından silindi! **").then(msg => msg.delete(5000));
+exports.run = async function(client, message, args) {
+  
+ //if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`Bu komutu kullanabilmek için **Mesajları Yönet** iznine sahip olmalısın!`);
+  
+  var x = args.slice(0).join(' ')
+  
+  if (!x) return message.reply("Temizlemek istediğin mesaj sayısını yazmalısın!")
+  
+  if (isNaN(x)) return message.reply("Temizlemek istediğin mesaj sayısını yazmalısın!")
+  
+  if (x < 1) return message.reply("**1** adetten az mesaj silemem!")
+  if (x > 100) return message.reply("**100** adetten fazla mesaj silemem!")
+  
+  let fetched = await message.channel.fetchMessages({limit: args[0]})
+  
+  message.channel.bulkDelete(fetched)
+  .catch(error => message.channel.send("`14` günden önceki mesajları silemem!"))
+  
+  message.channel.send(`**${args[0]}** adet mesaj başarıyla silindi!`).then(msg => {
+	msg.delete(3000)
+})
+  
+	message.delete();
+    
 };
 
 exports.conf = {
-  enabled: true,
-  guildOnly: true,
-  aliases: ['temizle','sil','clear'],
-  permLevel: 2
+  enabled: true, 
+  guildOnly: false, 
+  aliases: ["sil", "mesaj-sil", "mesajları-sil"],
+  permLevel: 1,
+    kategori: "moderasyon"
 };
 
 exports.help = {
   name: 'temizle',
-  description: 'Belirlenen miktar mesajı siler.',
-  usage: 'temizle <temizlenecek mesaj sayısı>'
+  category: 'moderasyon',
+  description: 'Belirtilen miktarda mesaj siler.',
+  usage: 'temizle <miktar>'
 };

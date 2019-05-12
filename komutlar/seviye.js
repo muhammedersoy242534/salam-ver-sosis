@@ -349,5 +349,5 @@ exports.conf = {
 exports.help = {
   name: 'seviye',
   description: 'Seviyenizi ve XP\'nizi gösterir.',
-  usage: 'seviye [@kullanıcı/renk/resim] [renk kodu/resim URLsi/sıfırla]'
+  usage: 'seviye'
 };
