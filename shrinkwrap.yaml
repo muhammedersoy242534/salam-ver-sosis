@@ -3,6 +3,7 @@ dependencies:
   canvas-constructor: 3.0.1
   chalk: 2.4.2
   cleverbot.io: 1.0.4
+  colors: 1.3.3
   common-tags: 1.8.0
   discord-anti-spam-tr: 0.7.4
   discord-economy: 1.1.6
@@ -838,6 +839,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
+  /colors/1.3.3:
+    dev: false
+    engines:
+      node: '>=0.1.90'
+    resolution:
+      integrity: sha512-mmGt/1pZqYRjMxB1axhTo16/snVZ5krrKkcmMeVKxzECMMXoCgnvTPp10QgHfcbQZw8Dq2jMNG6je4JlWU0gWg==
   /combined-stream/1.0.7:
     dependencies:
       delayed-stream: 1.0.0
@@ -3719,6 +3726,7 @@ specifiers:
   canvas-constructor: ^3.0.0
   chalk: ^2.4.2
   cleverbot.io: ^1.0.4
+  colors: ^1.3.3
   common-tags: ^1.8.0
   discord-anti-spam-tr: ^0.7.4
   discord-economy: ^1.1.6
@@ -3726,7 +3734,7 @@ specifiers:
   express: ^4.16.4
   ffmpeg: ^0.0.4
   gulp-math: ^1.0.0
-  jimp: ^0.6.3
+  jimp: ^0.6.4
   math: ^0.0.3
   math-expression-evaluator: ^1.2.17
   moment: ^2.24.0
