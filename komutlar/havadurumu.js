@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   
     if (!args[0]) {
         const embed = new Discord.RichEmbed()
-            .setDescription("Bir şehir yaz!")
+            .setDescription(" Bir şehir yaz!")
             .setColor("RANDOM")
         message.channel.send({embed})
         return
