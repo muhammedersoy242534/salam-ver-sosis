@@ -1,98 +1,68 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
-const fs = require('fs')
+const ayarlar = require('../ayarlar.json')
  
 exports.run = async (client, message, args) => {
-        if(!args[0]) {
-                const embed = new Discord.RichEmbed()
-                        .setDescription(`Lütfen geçerli bir sayı belirtiniz!`)
-                        .setColor("RANDOM")
-                        .setTimestamp()
-                message.channel.send({embed})
-                return
+  
+  const sayac = await db.fetch(`sayac_${message.guild.id}`);
+  const sayackanal = message.mentions.channels.first()
+  
+  if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için "\`Yönetici\`" yetkisine sahip olmalısın.`);
+     
+  if(args[0] === "sıfırla") {
+    if(!args[0]) {
+      message.channel.send(`Ayarlanmayan Şeyi Sıfırlayamazsın.`)
+      return
+    }
+    
+    db.delete(`sayacsayisi_${message.guild.id}`)
+    db.delete(`sayackanali_${message.guild.id}`)
+    message.channel.send(`Sayaç Başarıyla Sıfırlandı.`)
+    return
+  }
+  
+  
+  if(!args[0]) {
+    message.channel.send(`Bir Sayı Yazman Lazım! Kullanım: \`${ayarlar.prefix}sayaç-ayarla 50 <#kanal>\``);
+    return
+  }
+  
+  if(!sayackanal) {
+   message.channel.send(`Sayaç Kanalını Etiketlemelisin!`)
+  }
+
+
+  if(isNaN(args[0])) {
+    message.channel.send(`Bir Sayı Yazman Lazım! Kullanım: \`${ayarlar.prefix}sayaç-ayarla 50 <#kanal>\``)
+    return
   }
  
-        let profil = JSON.parse(fs.readFileSync("./ayarlar/sayac.json", "utf8"));
-  var mentionedChannel = message.mentions.channels.first();
-  const s1 = new Discord.RichEmbed()
-  .setDescription('Sayaç kanalı belirtmelisiniz!')
-  .setColor("RANDOM")
-                        .setTimestamp()
-  if (!mentionedChannel && args[0] !== "sıfırla") return message.channel.send(s1);
- 
- 
-        if(args[0] === "sıfırla") {
-                if(!profil[message.guild.id]) {
-                        const embed = new Discord.RichEmbed()
-                                .setDescription(`Sayaç, ayarlanmadığından dolayı sıfırlanamaz!`)
-                                .setColor("RANDOM")
-                                .setTimestamp()
-                        message.channel.send({embed})
-                        return
-                }
-                delete profil[message.guild.id]
-                fs.writeFile("./ayarlar/sayac.json", JSON.stringify(profil), (err) => {
-                        console.log(err)
-                })
-                const embed = new Discord.RichEmbed()
-                        .setDescription(`Sayaç, başarılı bir şekilde sıfırlandı!`)
-                        .setColor("RANDOM")
-                        .setTimestamp()
-                message.channel.send({embed})
+        if(args[0] <= message.guild.members.size) {
+                message.channel.send(`Sunucudaki Kullanıcı Sayısından (${message.guild.members.size}) Daha Yüksek Bir Değer Girmelisin.`)
                 return
         }
+  
  
-        if(isNaN(args[0])) {
-                const embed = new Discord.RichEmbed()
-                        .setDescription(`Lütfen, geçerli bir sayı belirtiniz!`)
-                        .setColor("RANDOM")
-                        .setTimestamp()
-                message.channel.send({embed})
+        if(args[0] <= message.guild.members.size) {
+                message.channel.send(`Sunucudaki Kullanıcı Sayısından (${message.guild.members.size}) Daha Yüksek Bir Değer Girmelisin.`)
                 return
         }
- 
-        if(args[0] <= message.guild.memberCount) {
-                const embed = new Discord.RichEmbed()
-                        .setDescription(`Lütfen, [${message.guild.memberCount}] rakamlı sayıdan daha yüksek bir değer belirtiniz!`)
-                        .setColor("RANDOM")
-                        .setTimestamp()
-                message.channel.send({embed})
-                return
-        }
- 
-        if(!profil[message.guild.id]){
-                profil[message.guild.id] = {
-                        sayi: args[0],
-      kanal: mentionedChannel.id
-                };
-        }
-       
-        profil[message.guild.id].sayi = args[0]
-  profil[message.guild.id].kanal = mentionedChannel.id
-       
-        fs.writeFile("./ayarlar/sayac.json", JSON.stringify(profil), (err) => {
-                console.log(err)
-        })
- 
-        const embed = new Discord.RichEmbed()
-                .setDescription(`Sayaç, başarılı bir şekilde \`${args[0]}\` olarak ayarlandı, sayaç kanalı ise ${mentionedChannel} olarak ayarlandı!`)
-                .setFooter('Boss, iyi eğlenceler diler!', client.user.avatarURL)
-                .setColor("RANDOM")
-                .setTimestamp()
-        message.channel.send({embed})
+  
+  db.set(`sayacsayisi_{message.guild.id}`, args[0])
+  db.set(`sayackanali_${message.guild.id}`, sayackanal.name)
+  
+  message.channel.send(`Sayaç \`${args[0]}\`, Sayaç Kanalı \`#${sayackanal.name}\` Olarak Ayarlandı.`)
 }
  
 exports.conf = {
         enabled: true,
         guildOnly: true,
-        aliases: ['sayaç-ayarla'],
-        permLevel: 2,
-        kategori: "moderasyon"
+        aliases: ['sayaç'],
+        permLevel: 3
 }
  
 exports.help = {
-        name: 'sayaçayarla',
-        description: 'Sayaç, ayarlar!',
-        usage: 'sayaçayarla [sayı/sıfırla] [kanal]'
+        name: 'sayaç-ayarla',
+        description: 'Sunucunun Sayacını Ayarlar.',
+        usage: 'sayaç-ayarla <sayı> <#kanal>'
 }
-   
