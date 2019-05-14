@@ -5,9 +5,9 @@ var prefix = ayarlar.prefix;
 
 exports.run = (client, message, params) => {
   const embedyardim = new Discord.RichEmbed()
+  .setTitle(' Yetkili Kuralları ')
   .setColor('RANDOM')
-  .setTitle('  Sunucu
-  .addField("** ⚠ Sunucu Yetkilisi Komutları ⚠ **", `m!ban = İstediğiniz Kişiyi Sunucudan Banlar. \nm!kick  = İstediğiniz Kişiyi Sunucudan Atar. \nm!unban = İstediğiniz Kişinin Yasağını Açar. \nm!sustur = İstediğiniz Kişiyi Susturur. \nm!link-engelle = Anti Reklam Koruması. \nm!küfür-engelle = Anti Küfür Koruması. \nm!otorol = Gelen Herkeze Rol.`)
+  .addField(`m!ban = İstediğiniz Kişiyi Sunucudan Banlar. \nm!kick  = İstediğiniz Kişiyi Sunucudan Atar. \nm!unban = İstediğiniz Kişinin Yasağını Açar. \nm!sustur = İstediğiniz Kişiyi Susturur. \nm!link-engelle = Anti Reklam Koruması. \nm!küfür-engelle = Anti Küfür Koruması. \nm!otorol = Gelen Herkeze Rol.`)
     message.channel.send(embedyardim);
    
 };
