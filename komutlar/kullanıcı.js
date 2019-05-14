@@ -1,14 +1,16 @@
 const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
 
-let botid = ('') //bu yere botun id'sini yapıştırın.
-//eğer botunuz dbl(discord bot list) de yoksa Bota Oy Ver (Vote) olmucaktır.
+var prefix = ayarlar.prefix;
 
-exports.run = (client, message, args) => {
-    const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setAuthor(`${client.user.username} Kullanıcı Komutları`)
+    exports.run = (client, message, params) => {
+    const embedyardim = new Discord.RichEmbed()
+ .setThumbnail("https://78.media.tumblr.com/10b366f294d47b40d857d6e47872d0dc/tumblr_ntubqoYYsF1sqwlqgo3_250.gif")
+    .setTitle(" Kullanıcı Komutları ")
+.setDescription('')
+.setColor("RANDOM")
     .addField('prefix+komut', 'açıklama/kullanım amacı')//ne kadar kullanıcı komutunuz varsa o kadar .addField('prefix+komut', 'açıklama/kullanım amacı') koyun.
-    message.channel.sendEmbed(embed);
+    message.channel.sendEmbed(embedyardim);
 
 };
 
@@ -22,5 +24,5 @@ exports.conf = {
 exports.help = {
   name: 'kullanıcı',
   description: '',
-  usage: ''
+  usage: 'kullanıcı'
 };
