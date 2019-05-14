@@ -7,8 +7,8 @@ var prefix = ayarlar.prefix;
     const embedyardim = new Discord.RichEmbed()
  .setThumbnail("https://78.media.tumblr.com/10b366f294d47b40d857d6e47872d0dc/tumblr_ntubqoYYsF1sqwlqgo3_250.gif")
     .setTitle(" Kullanıcı Komutları ")
-.setDescription('')
-.setColor("RANDOM")
+    .setDescription('')
+    .setColor("RANDOM")
     .addField('prefix+komut', 'açıklama/kullanım amacı')//ne kadar kullanıcı komutunuz varsa o kadar .addField('prefix+komut', 'açıklama/kullanım amacı') koyun.
     message.channel.sendEmbed(embedyardim);
 

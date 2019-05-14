@@ -1,26 +1,26 @@
-const Discord = require("discord.js");
-const moment = require("moment");
-const colors = require("colors");
-var green = process.env.NODE_DISABLE_COLORS ? '' : '\x1b[32m';
+const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
 
-require("moment-duration-format");
+var prefix = ayarlar.prefix;
 
-exports.run = (client, msg) => {
-  const duration = moment.duration(client.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
-  msg.channel.sendCode("asciidoc", `⇝ Yetkili Komutlar | Not:Komutlar . ile baslar	
-  • istatistik      :: Bot Istatistiligini Gosterir.
-  • anket :: Anket Acar		
-  • ban   :: İstediğiniz kişiyi sunucudan yasaklar.
-  • kick    :: İstediğiniz kişiyi sunucudan atar.
-  • sustur  :: İstediğiniz kişiyi susturur.
-  • temizle :: Mesajları siler.
-  • uyar    :: İstediğiniz kişiye uyarı verir.
-  • duyuruyap   :: Sunucunuzda duyuru yapmanızı sağlar.
-  • kilit :: Unuttum :(
-  • unload :: Yetkili Bilir
-  • unban  :: Ban Kaldirir.
-  • terfi  :: Kullaniciyi Terfi Eder
-    Sayfa 4 / 4 | Yapımcım: Gökdemir`);
+exports.run = (client, message, params) => {
+const embedyardim = new Discord.RichEmbed()
+.setThumbnail("https://78.media.tumblr.com/10b366f294d47b40d857d6e47872d0dc/tumblr_ntubqoYYsF1sqwlqgo3_250.gif")
+         .setTitle(" Yetkili Komutları ")
+         .setDescription('')
+         .setColor()
+.addField(' • istatistik      :: Bot Istatistiligini Gosterir.')
+.addField('• anket :: Anket Acar.')
+.addField(' • ban   :: İstediğiniz kişiyi sunucudan yasaklar.')
+.addField('  • kick    :: İstediğiniz kişiyi sunucudan atar.')
+.addField(' • sustur  :: İstediğiniz kişiyi susturur.')
+.addField(' • temizle :: Mesajları siler.')
+.addField(' • uyar    :: İstediğiniz kişiye uyarı verir.')
+.addField(' • duyuruyap   :: Sunucunuzda duyuru yapmanızı sağlar.')
+.addField('  • kilit :: Sunucu kilitler.')
+.addField(' • unload :: Yetkili Bilir.')
+.addField(' • unban  :: Ban Kaldirir.')
+.addField('  • terfi  :: Kullaniciyi Terfi Eder.')
 };
 
 exports.conf = {
