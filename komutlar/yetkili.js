@@ -5,10 +5,8 @@ var prefix = ayarlar.prefix;
 
 exports.run = (client, message, params) => {
   const embedyardim = new Discord.RichEmbed()
-.setThumbnail("https://78.media.tumblr.com/10b366f294d47b40d857d6e47872d0dc/tumblr_ntubqoYYsF1sqwlqgo3_250.gif")
-  .setTitle(" Yetkili Komutları ")
   .setColor('RANDOM')
-  .addField(`.ban = İstediğiniz kişiyi sunucudan banlar. \n.kick  = İstediğiniz kişiyi kunucudan atar. \n.unban = İstediğiniz kişinin banını açar. \n.sustur = İstediğiniz kişiyi susturur. \n.link-engelle = Reklam engeller. \n.küfür-engelle = Küfür engeller. \n.otorol = Gelen herkeze rol verir.`)
+  .addField( `m!ban = İstediğiniz Kişiyi Sunucudan Banlar. \nm!kick  = İstediğiniz Kişiyi Sunucudan Atar. \nm!unban = İstediğiniz Kişinin Yasağını Açar. \nm!sustur = İstediğiniz Kişiyi Susturur. \nm!link-engelle = Anti Reklam Koruması. \nm!küfür-engelle = Anti Küfür Koruması. \nm!otorol = Gelen Herkeze Rol.`)
     message.channel.send(embedyardim);
    
 };
