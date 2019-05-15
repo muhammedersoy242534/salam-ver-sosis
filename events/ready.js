@@ -1,5 +1,4 @@
 
-Save  New  Duplicate & Edit  Just Text
 const chalk = require('chalk');
 const moment = require('moment');
 const Discord = require('discord.js');
