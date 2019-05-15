@@ -10,7 +10,7 @@ module.exports = client => {
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: ${client.user.username} ismi ile giriş yapıldı!`);
   client.user.setStatus("idle");
 var oyun = [
-  " ❯ .yardım"," ❯ 💪7/24 AKTİF!"," ❯ 🌍602 Kullanıcı"," ❯ İyi Oyunlar" 
+  " ❯ .yardım"," ❯ 💪7/24 AKTİF!"," ❯ 🌍202 Kullanıcı"," ❯ İyi Oyunlar" 
          ];
 
     setInterval(function() {
