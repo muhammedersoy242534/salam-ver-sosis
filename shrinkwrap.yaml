@@ -11,6 +11,7 @@ dependencies:
   express: 4.16.4
   ffmpeg: 0.0.4
   gulp-math: 1.0.0
+  hastebin-gen: 2.0.4
   jimp: 0.6.4
   math: 0.0.3
   math-expression-evaluator: 1.2.17
@@ -1684,6 +1685,12 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
+  /hastebin-gen/2.0.4:
+    dependencies:
+      node-fetch: 2.6.0
+    dev: false
+    resolution:
+      integrity: sha512-uIaJ/P3q3tJX7+yYuNEeLDmdbq6+DQAuJCHc6HfArRTJ7jfOHrmOU0zcYPSwe1D8I9F1L1jT16X9MEA8AFYVrw==
   /homedir-polyfill/1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -2448,6 +2455,12 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-YuZKluhWGJwCcUu4RlZstdAxr8bFfOVHakc1mplwHkk8J+tqM1Y5yraYvIUpeX8aY7+crCwiELJq7Vl0o0LWXw==
+  /node-fetch/2.6.0:
+    dev: false
+    engines:
+      node: 4.x || >=6.0.0
+    resolution:
+      integrity: sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
   /node-pre-gyp/0.11.0:
     dependencies:
       detect-libc: 1.0.3
@@ -3734,6 +3747,7 @@ specifiers:
   express: ^4.16.4
   ffmpeg: ^0.0.4
   gulp-math: ^1.0.0
+  hastebin-gen: ^2.0.4
   jimp: ^0.6.4
   math: ^0.0.3
   math-expression-evaluator: ^1.2.17
