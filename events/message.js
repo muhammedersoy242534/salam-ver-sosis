@@ -43,7 +43,8 @@ module.exports = async message => {
     message.channel.send(`Komutlarımda \`\`${command}\`\` adında bir komut bulamadım!(Bu hatayı müzik konutlarında verebilir (s!myardım)dan müzik komutlarına ulaşabilirsiniz)| Komut listesine bakmak için: \`\`${ayarlar.prefix}yardım\`\``)
     }
   }
-};​const ayarlar = require('../ayarlar.json');
+};
+const ayarlar = require('../ayarlar.json');
 module.exports = message => {
   let client = message.client;
   if (message.author.bot) return;
