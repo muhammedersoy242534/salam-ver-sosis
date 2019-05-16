@@ -694,3 +694,59 @@ client.on("guildMemberAdd", async member => {
 
 
 client.login(ayarlar.token);
+
+Save New Duplicate & Edit Just Text Twitter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+client.on('message', async message => {
+  
+  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  
+  let kullanıcı = message.mentions.users.first() || message.author
+  let afkdkullanıcı = await db.fetch(`afk_${message.author.id}`)
+  let afkkullanıcı = await db.fetch(`afk_${kullanıcı.id}`)
+  let sebep = afkkullanıcı
+ 
+  if (message.author.bot) return;
+  if (message.content.includes(`${prefix}afk`)) return;
+  
+  if (message.content.includes(`<@${kullanıcı.id}>`)) {
+    if (afkdkullanıcı) {
+      message.channel.send(`\`${message.author.tag}\` adlı kullanıcı artık AFK değil.`)
+      db.delete(`afk_${message.author.id}`)
+    }
+    if (afkkullanıcı) return message.channel.send(`${message.author}\`${kullanıcı.tag}\` şu anda AFK. Sebep : \`${sebep}\``)
+  }
+
+  if (!message.content.includes(`<@${kullanıcı.id}>`)) {
+    if (afkdkullanıcı) {
+      message.channel.send(`\`${message.author.tag}\` adlı kullanıcı artık AFK değil.`)
+      db.delete(`afk_${message.author.id}`)
+    }
+  }
+});
