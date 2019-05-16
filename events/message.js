@@ -44,7 +44,6 @@ module.exports = async message => {
     }
   }
 };
-const ayarlar = require('../ayarlar.json');
 module.exports = message => {
   let client = message.client;
   if (message.author.bot) return;

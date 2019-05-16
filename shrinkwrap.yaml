@@ -10,6 +10,7 @@ dependencies:
   discord.js: 11.5.0
   express: 4.16.4
   ffmpeg: 0.0.4
+  figlet: 1.2.1
   gulp-math: 1.0.0
   hastebin-gen: 2.0.4
   jimp: 0.6.4
@@ -1321,6 +1322,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-HEYN+OfaUSf2LO70v6BsWciWMMs=
+  /figlet/1.2.1:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha512-qc8gycfnnfOmfvPl7Fi3JeTbcvdmbZkckyUVGGAM02je7Ookvu+bBfKy1I4FKqTsQHCs3ARJ76ip/k98r+OQuQ==
   /file-contents/0.2.4:
     dependencies:
       extend-shallow: 2.0.1
@@ -3746,6 +3753,7 @@ specifiers:
   discord.js: ^11.5.0
   express: ^4.16.4
   ffmpeg: ^0.0.4
+  figlet: ^1.2.1
   gulp-math: ^1.0.0
   hastebin-gen: ^2.0.4
   jimp: ^0.6.4
