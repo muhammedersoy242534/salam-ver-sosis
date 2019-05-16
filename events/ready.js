@@ -20,7 +20,7 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
 var oyun = [
-      prefix + "yardım|Beni Sunucuna Ekle⚡️",
+       "s!yardım|Beni Sunucuna Ekle⚡️",
     ];
 
     setInterval(function() {
