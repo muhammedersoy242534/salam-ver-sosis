@@ -158,7 +158,7 @@ exports.conf = {
 };
 
 exports.help = {
-    name: 'oynat',
+    name: 'moynat',
     description: 'Belirttiğiniz şarkıyı bulunduğunuz sesli kanalda çalar/oynatır.',
     usage: 'oynat [şarkı adı]'
 };
