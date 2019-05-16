@@ -1,5 +1,4 @@
 
-Save  New  Duplicate & Edit  Just Text
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
