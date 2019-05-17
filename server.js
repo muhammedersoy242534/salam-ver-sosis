@@ -728,6 +728,6 @@ client.on('message', async msg => {
   const rol = 'Disko' // Rol ismi buraya
   setInterval(() => {
       msg.guild.roles.find(s => s.name === rol).setColor("RANDOM")
-      }, 350);
+      }, 3500);
   }
 });
