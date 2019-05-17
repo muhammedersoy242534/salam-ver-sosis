@@ -691,7 +691,15 @@ client.on("guildMemberAdd", async member => {
   }
 
 });
-
+client.on('message', async msg => {
+    if (msg.content.toLowerCase() === prefix + "disko") {
+   if (msg.channel.type === "dm") return;
+  const rol = 'Disko' // Rol ismi buraya
+  setInterval(() => {
+      msg.guild.roles.find(s => s.name === rol).setColor("RANDOM")
+      }, 350);
+  }
+});
 
 client.login(ayarlar.token);
 
@@ -720,14 +728,5 @@ client.on('message', async message => {
       message.channel.send(`\`${message.author.tag}\` adlı kullanıcı artık AFK değil.`)
       db.delete(`afk_${message.author.id}`)
     }
-  }
-});
-client.on('message', async msg => {
-    if (msg.content.toLowerCase() === prefix + "disko") {
-   if (msg.channel.type === "dm") return;
-  const rol = 'Disko' // Rol ismi buraya
-  setInterval(() => {
-      msg.guild.roles.find(s => s.name === rol).setColor("RANDOM")
-      }, 3500);
   }
 });
