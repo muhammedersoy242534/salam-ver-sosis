@@ -321,7 +321,7 @@ console.log(err);
 
 ////////////////////////EVERYONE ENGELLEME///////////////////
 client.on('message', message => {
-if (message.content.includes('@everyone')) {
+if (message.content.includes('@everone')) {
 message.reply("Lütfen **everyone** Kullanmayınız.!!")
 message.delete()
 }
@@ -329,7 +329,7 @@ message.delete()
 
 
 client.on('message', message => {
-if (message.content.includes('@here')) {
+if (message.content.includes('@her')) {
 message.reply("Lütfen **here** Kullanmayınız.!!")
 message.delete()
 }
