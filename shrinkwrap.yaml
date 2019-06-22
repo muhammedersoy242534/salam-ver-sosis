@@ -8,6 +8,7 @@ dependencies:
   discord-anti-spam-tr: 0.7.4
   discord-economy: 1.1.6
   discord.js: 11.5.0
+  discord.js-commando: 0.10.0
   express: 4.16.4
   ffmpeg: 0.0.4
   figlet: 1.2.1
@@ -1108,6 +1109,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-BXhJ+zwfEQ+mcu7bRUgzqsI3LLjAmtMgCyj/NqLW4Lup5KbYbTEKkEeRVtj1zS4cFHuJ327O1Yworoc32/oTqw==
+  /discord.js-commando/0.10.0:
+    dependencies:
+      common-tags: 1.8.0
+      escape-string-regexp: 1.0.5
+      require-all: 2.2.0
+    dev: false
+    engines:
+      node: '>=7.6.0'
+    peerDependencies:
+      discord.js: ^11.2.0
+      sqlite: ^2.0.0
+    resolution:
+      integrity: sha1-v6mL8zEIcDdvPHoNe3Nqaj5dCg8=
   /discord.js/11.5.0:
     dependencies:
       long: 4.0.0
@@ -3109,6 +3123,10 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
+  /require-all/2.2.0:
+    dev: false
+    resolution:
+      integrity: sha1-tEIMIzrAKC0P9Jsnf7iAqLXeCJQ=
   /require-directory/2.1.1:
     dev: false
     engines:
@@ -3934,6 +3952,7 @@ specifiers:
   discord-anti-spam-tr: ^0.7.4
   discord-economy: ^1.1.6
   discord.js: ^11.5.0
+  discord.js-commando: ^0.10.0
   express: ^4.16.4
   ffmpeg: ^0.0.4
   figlet: ^1.2.1

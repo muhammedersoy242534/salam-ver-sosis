@@ -745,4 +745,58 @@ client.on("message",message => {
       message.delete(5000)
     }
 })})
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === ',çöp') {
+    if (msg.channel.type === 'dm') {
+      const ozelmesajuyari = new Discord.RichEmbed()
+    .setColor(0xdcff00)
+    .setTimestamp()
+    .setAuthor(msg.author.username, msg.author.avatarURL)
+    .addField('<a:xxx:589333361047109659> Uyarı <a:xxx:589333361047109659>', 'Bu komutu özel mesajlarda kullanamazsın.')
+    msg.author.send(ozelmesajuyari); }
+      if (msg.channel.type !== 'dm') {
+        if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+          if (msg.author.id !== ayarlar.yapimci) {
+            const mesajlariyonet = new Discord.RichEmbed()
+          .setColor(0xFF0000)
+          .setTimestamp()
+          .setAuthor(msg.author.username, msg.author.avatarURL)
+          .addField('<a:xxx:589333361047109659>Uyarı <a:xxx:589333361047109659>', 'Bu komutu kulllanmak için `Mesajları Yönet` iznine sahip olmalısın.')
+          return msg.author.send(mesajlariyonet);
+      }}
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100);
+      msg.channel.bulkDelete(100); //500 mesaj gg
+      const sohbetsilindi = new Discord.RichEmbed()
+    .setColor(0x35ff00)
+    .setTimestamp()
+    .addField('Eylem:', '**Sohbet silme**')
+    .addField('Yetkili:', '` ' + msg.author.username + '`')
+    .addField('Silinen Mesaj Sayısı:', '»'+ '  **500**  ' + '«')
+    .addField('Sonuç:', '`Başarılı`'+ ' ✅ ')
+    return msg.channel.send(sohbetsilindi);
+}}});
 
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'hmm') {
+    msg.channel.sendMessage('Ne düşünüon acaba?<a:hmm:590846912031227914>');
+  }
+});client.on("message", async msg => {
+    if (msg.channel.type === "dm") return;
+      if(msg.author.bot) return;  
+        if (msg.content.length > 4) {
+         if (db.fetch(`capslock_${msg.guild.id}`)) {
+           let caps = msg.content.toUpperCase()
+           if (msg.content == caps) {
+             if (!msg.member.hasPermission("ADMINISTRATOR")) {
+               if (!msg.mentions.users.first()) {
+                 msg.delete()
+                 return msg.channel.send(`<a:pust:590136620217532418> ${msg.author}, Bu sunucuda, büyük harf kullanımı engellenmekte!<a:pust:590136620217532418>`).then(m => m.delete(5000))
+     }
+       }
+     }
+   }
+  }
+});
