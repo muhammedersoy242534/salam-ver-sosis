@@ -783,7 +783,8 @@ client.on('message', msg => {
   if (msg.content.toLowerCase() === 'hmm') {
     msg.channel.sendMessage('Ne düşünüon acaba?<a:hmm:590846912031227914>');
   }
-});client.on("message", async msg => {
+});
+client.on("message", async msg => {
     if (msg.channel.type === "dm") return;
       if(msg.author.bot) return;  
         if (msg.content.length > 4) {
