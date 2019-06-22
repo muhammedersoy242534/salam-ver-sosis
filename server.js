@@ -730,3 +730,19 @@ client.on('message', async message => {
     }
   }
 });
+client.on("messageDelete", message => {
+  if(message.author.bot) return;
+  db.set(`sonmesajicerik_${message.channel.id}`,message.content)
+  db.set(`sonmesajsahipid_${message.channel.id}`,message.author.id)
+  console.log('Sunucu:' + message.guild.name + 'Snipe: ' + message.content + ' ' + client.users.get(message.author.id).tag)
+  });
+
+client.on("message",message => {
+  if(!message.author.bot) return;
+  db.fetch(`usohbet_${message.channel.id}`).then(usdurum => {
+    if(!usdurum || usdurum === 'pasif') return;
+    else {
+      message.delete(5000)
+    }
+})})
+
