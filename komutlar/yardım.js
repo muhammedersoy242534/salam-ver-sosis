@@ -1,14 +1,27 @@
-exports.run = (client, message, args) => {
- message.channel.send('remix,notlar,notbilgi,otorol,kapat,otorolkapat,çalışmakanal,notal,notsil,alıntı,snipe,8ball,ascii,atatürk,capsengel,anket,atamınsözleri,ara155,ailemiz,deyim,düello,emoji,emojiid,espri,eval,image,çık,konuş,saat,trump,us,sarıl')
-}
+const Discord = require('discord.js');
+const db = require("quick.db")
+let botid = ('578987421266477056') 
+exports.run = async(client, message, args) => {
+  
+    const embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setAuthor(`${client.user.username} Eğlence Komutları`)
+     .addField("**__➤ Eğlence Komutları__**", '**➳ ')
+    .addField(`» Linkler`, `[Bot Davet Linki](https://discordapp.com/oauth2/authorize?client_id=${botid}&scope=bot&permissions=8) **|** [Destek Sunucusu](https://discord.gg/9XgwnBZ) **|** [Bota Oy Ver (Vote)](https://discordbots.org/bot/${botid}/vote) **|** [Web Sitesi]()`)
+    message.channel.sendEmbed(embed);
+
+};
+
 exports.conf = {
-enabled: true,
-aliases: [],
-permLevel: 0
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0,
 };
 
 exports.help = {
-name: "yardım",
-description: "remix listesi",
-usage: "yardım"
+  name: 'eğlence',
+  description: '',
+  usage: ''
 };
+   

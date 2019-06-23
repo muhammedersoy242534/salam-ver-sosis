@@ -1,13 +1,13 @@
 const ytdl = require('ytdl-core');
 
 module.exports.run = async(Octopus, message, args) => {
-    var url = 'https://www.youtube.com/watch?v=FMzE8eSFcbM';
+    var url = 'https://www.youtube.com/watch?v=oKw559qxhQQ';
     const voiceChannel = message.member.voiceChannel;
     if(!voiceChannel) return message.channel.send("Lütfen herhangi bir ses kanalına girin.");
     if(message.guild.voiceConnection) return message.channel.send("Şuanda ses kanalındayım.");
     
     var connection = await voiceChannel.join();
-    message.channel.send("karışık remix işte ne yazıyım")
+    message.channel.send("yavaşşşşşşşşşşşş")
         .then(msg => {
             msg.delete(10000)
         });
@@ -24,13 +24,13 @@ process.on('unhandledRejection', error => console.error(`İzin Hatası:\n${error
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['krşk'],
+  aliases: ['hkn'],
   kategori: 'özel',
   permLevel: 0
 };
 
 exports.help = {
-  name: 'karışık',
+  name: 'hakan',
   description: 'Acaba ne?',
   usage: 'earrape'
 };
