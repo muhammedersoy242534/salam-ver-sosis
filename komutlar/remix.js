@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
- message.channel.send('duldul,balvin,rte,haksızmıyım,76darbe,usmanaga,deli,kimkimikoparıyor,yamaç,silkbeni,tvk,evlenecem,kmoi,çukulata,gırtlak,severim,mercedes,bunlardan birisini seç kullan örnek kullanım: t?gırtlak çık komutu t?çık Not:sunucunuzdaki prefix ile yapın.')
+ message.channel.send('duldul,balvin,rte,haksızmıyım,muharrem,76darbe,usmanaga,deli,kimkimikoparıyor,yamaç,silkbeni,tvk,evlenecem,kmoi,çukulata,gırtlak,severim,mercedes,bunlardan birisini seç kullan örnek kullanım: t?gırtlak çık komutu t?çık Not:sunucunuzdaki prefix ile yapın.')
 }
 exports.conf = {
 enabled: true,
