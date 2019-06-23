@@ -6,7 +6,7 @@ if(!yazı) return message.channel.send(":x: | Not almak için bir yazı yazını
 db.add(`notsayi_${message.author.id}`,1)
 db.fetch(`notsayi_${message.author.id}`).then(notsayı => {
 db.push(`notlar_${message.author.id}`, `${notsayı - 1 + " - " + yazı}`)
-message.channel.send(`**${message.author.tag}** adlı kullanıcının **${notsayı.toString().replace("1","0")}** sayılı notu **${yazı}** eklendi.`)
+message.channel.send(`**${message.author.tag}** adlı kullanıcının **${notsayı.toString().replace("1","0")}** sayılı notu **${yazı}** eklendi.<a:ok:589407612227944461>`)
   
 })}
 exports.conf = {

@@ -37,8 +37,8 @@ module.exports.run = async (bot, message, args) => {
   var sumsum = new Discord.RichEmbed()
   
             .addField("Oylama Tamamlandı:", "----------------------------------------\n" +
-                                          "toplam oy (Hayır): " + `${NO_Count-1}\n` +
-                                          "toplam oy (Evet): " + `${YES_Count-1}\n` +
+                                          "<a:iptal:590136777155543040> Toplam oy (Hayır): " + `${NO_Count-1}\n` +
+                                          "<a:ok:589407612227944461> Toplam oy (Evet): " + `${YES_Count-1}\n` +
                                           "----------------------------------------\n" +
                                           "NOT: Tekme atmak için gerekli oylar (5+)\n" +
                                           "----------------------------------------", true)

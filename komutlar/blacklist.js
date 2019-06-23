@@ -8,7 +8,7 @@ exports.run = async (bot, message, args) => {
   if(args[0])
   db.set(`karaliste_${args[0]}`, 'aktif')
       message.channel.send(new Discord.RichEmbed()
-                           .setDescription('✅ | Kullanıcı Karalisteye Alındı!')
+                           .setDescription('<a:ok:589407612227944461>| Kullanıcı Karalisteye Alındı!')
                            .setColor('RANDOM')
                           )
       console.log(`${args[0]} id li kullanıcı Karalisteye alındı`)
