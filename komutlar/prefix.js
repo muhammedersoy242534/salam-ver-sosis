@@ -1,38 +1,20 @@
-const db = require('quick.db');
-
-exports.run = (client, message, args, func) => {
-  
-  if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için "\`Yönetici\`" yetkisine sahip olmalısın.`);
-  
-  let preffix = db.fetch(`prefix_${message.guild.id}`)
-  
-    if(args[0] === "sıfırla") {
-    if(!preffix) {
-      message.channel.send(`Ayarlanmayan şeyi sıfırlayamazsın.`)
-      return
-    }
-    
-    db.delete(`prefix_${message.guild.id}`)
-    message.channel.send(`Prefix başarıyla sıfırlandı. Mevcut prefix \`!\``)
-    return
-  }
-  
-  if (!args[0])
-    return message.channel.send(`Bir prefix girmelisin.`)
-  db.set(`prefix_${message.guild.id}`, args[0])
-    message.channel.send(`Prefix başarıyla \`${args[0]}\` olarak ayarlandı.`)
-  
-};
-
+const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
+const db = require("quick.db")
+exports.run = (client, message, args) => {
+let prefix = args[0]
+if(!prefix) return message.channel.send(":x: | Prefixi Ne Olarak Ayarlayacağını Yazmadın?")
+db.set(`prefix_${message.guild.id}`, `${prefix}`)
+message.channel.send(":white_check_mark: | Bu Sunucudaki Yeni Prefixim: **"+prefix +"\n**Bu Özelliği Kapatmak için **" + prefix + "kapat prefix**")
+}
 exports.conf = {
-    enabled: true,
-    guildOnly: true,
-    aliases: ['prefix-ayarla'],
-    permLevel: 0
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 3
 };
-  
-  exports.help = {
-    name: 'prefix',
-    description: 'Bota eklenmesini istediğiniz şeyi tavsiye etmenizi sağlar',
-    usage: 'prefix <prefix>'
+exports.help = {
+  name: 'prefix',
+  description: 'RitararyCode Sunucusuna Aittir!',
+  usage: 'Izinsiz Paylaşmayın Aq'
 };
