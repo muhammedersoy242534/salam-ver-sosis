@@ -801,3 +801,17 @@ client.on("message", async msg => {
    }
   }
 });
+// .
+client.on('guildMemberAdd', async member => {
+  db.fetch(`otorol_${member.guild.id}`).then(rol => {
+    
+  var role = member.guild.roles.get(rol)
+  
+  db.fetch(`otorolkanal_${member.guild.id}`).then (knl => {
+  let kanal = member.guild.channels.get(knl)
+  
+  member.addRole(role)
+  kanal.send(`${member.tag} adlı kullanıcı sunucuya katıldı! ${role.name} adlı rol başarıyla verildi!<a:ok:589407612227944461>`)
+})})
+  
+  })
