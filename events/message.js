@@ -1,3 +1,4 @@
+// Ritarary Code Sunucusuna Aittir. Çalıp Paylaşanın amk // 
 
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json');
@@ -34,5 +35,4 @@ db.fetch(`calisimmi_${message.channel.id}`).then(izin => {
   }
   }})}})})}
   
-
-
+// Ritarary Code Sunucusuna Aittir. Çalıp Paylaşanın amk // 

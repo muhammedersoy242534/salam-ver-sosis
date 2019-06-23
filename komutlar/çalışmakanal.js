@@ -7,7 +7,7 @@ if(message.mentions.channels.first()) channel = message.mentions.channels.first(
 else channel = args[0]
 if(!channel) return message.channel.send("Hata! Bir Kanal Etikellemeli veya Bir Kanal idsi girmelisin")
  db.set(`calisimmi_${channel}`, "aktif")
- message.channel.send(":white_check_mark: | Artık <#" + channel + "> kanalında çalışmayacağım\nBu Özelliği Değiştirmek için aynı şeyleri uygulayın.")
+ message.channel.send(":white_check_mark: | Artık <#" + channel + "> kanalında çalışmayacağım\nBu Özelliği Kapatmak İçin kapat çalışmakanal {kanal} uygulamanız gereklidir.")
   
 }
 exports.conf = {
