@@ -7,7 +7,7 @@ module.exports.run = async(Octopus, message, args) => {
     if(message.guild.voiceConnection) return message.channel.send("Şuanda ses kanalındayım.");
     
     var connection = await voiceChannel.join();
-    message.channel.send("çukulata")
+    message.channel.send("çukulata <a:kullanc:592270311035109396>")
         .then(msg => {
             msg.delete(10000)
         });
