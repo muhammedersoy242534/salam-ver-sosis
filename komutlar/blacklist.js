@@ -22,5 +22,5 @@ exports.conf = {
 exports.help = {
   name: 'blacklist',
   description: 'RitararyCodeye Aittir',
-  usage: 'Çalıp Paylaşmayın AMK'
+  usage: ''
 };
