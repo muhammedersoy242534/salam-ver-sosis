@@ -19,7 +19,8 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['duyuru', 'duyuruyap'],
-  permLevel: 0
+  permLevel: 0,
+  kategori:'eğlence',
 };
 
 exports.help = {
