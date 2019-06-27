@@ -5,8 +5,8 @@ if (!message.member.hasPermission ('MANAGE_GUILD')) return message.channel.send 
   let rol = message.mentions.roles.first()
   let kanal = message.mentions.channels.first()
    
-  if(!rol) return message.channel.send('<a:iptal:590136777155543040>| Bir Rol Etiketlemelisin Örnek: g!otorol @Üye #kanal')
-  else if(!kanal) return message.channel.send('<a:iptal:590136777155543040> | Bir kanal Etiketlemelisin Örnek: g!otorol @Üye #kanal')
+  if(!rol) return message.channel.send('<a:iptal:590136777155543040>| Bir Rol Etiketlemelisin Örnek: .otorol @Üye #kanal')
+  else if(!kanal) return message.channel.send('<a:iptal:590136777155543040> | Bir kanal Etiketlemelisin Örnek: .otorol @Üye #kanal')
   
   db.set(`otorol_${message.guild.id}`, rol.id)
   db.set(`otorolkanal_${message.guild.id}`, kanal.id)
