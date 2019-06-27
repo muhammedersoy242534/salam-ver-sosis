@@ -4,7 +4,7 @@ const embed = new Discord.RichEmbed();
  var request = require('request'); 
  module.exports.run = async (bot, message, args) => {
 
-  request('https://discordbotlistt.glitch.me/api/botlar/574331506806226951/oylar/'+message.author.id, function (error, response, body) {
+  request('https://site adı.glitch.me/api/botlar/574331506806226951/oylar/'+message.author.id, function (error, response, body) {
     if (error) return console.log('Hata:', error);
     else if (!error) { 
       var api = JSON.parse(body);

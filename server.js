@@ -268,7 +268,38 @@ else channel.guild.channels.get(membermodChannel).send(embed) }
 
 });
 
+client.on("message", async msg => {
 
+
+
+  if (msg.content === client.ayarlar.prefix+"gizli") {
+    msg.channel.send(`**İngilizceye Çevrilmiş Komut Sayısı:** \`${client.english.size}\` \n--------------\n**Toplam Komut Sayısı:** \`${client.commands.size}\` \n\n[${client.commands.size}'da ${client.english.size} ingilizceye çevrilmiş.]`)
+  }
+  
+  const request = require('node-superfetch');
+  const db = require('quick.db');
+  
+  if (msg.channel.type === "dm") return;
+  if(msg.author.bot) return;  
+  
+  if (msg.content.length > 7) {
+    
+    db.add(`puancik_${msg.author.id + msg.guild.id}`, 1)
+};
+//seviye yeri ///////
+  if (db.fetch(`puancik_${msg.author.id + msg.guild.id}`) > 150) {
+    
+    db.add(`seviye_${msg.author.id + msg.guild.id}`, 1)
+    
+    msg.channel.send(`Tebrik ederim <@${msg.author.id}>! Seviye atladın ve **${db.fetch(`seviye_${msg.author.id + msg.guild.id}`)}** seviye oldun!<a:yuppi:590847074795388938>`)
+    
+    db.delete(`puancik_${msg.author.id + msg.guild.id}`)
+    
+  };
+});
+  
+  
+  
 ///////////////////KÜFÜR ENGELLEME/////////////////////
 client.on("message", async msg => {
 db.fetch(`kufur_${msg.guild.id}`).then(i => {
