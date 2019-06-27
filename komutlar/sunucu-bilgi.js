@@ -101,7 +101,7 @@ exports.run = (client, message, params) => {
    
    .setFooter(`${message.author.username} | Tarafından Kontrol Ediliyor..`, message.guild.iconURL)
       .setTimestamp()
-     .setImage('https://cdn.discordapp.com/attachments/586939858921062424/592669145234014208/JPEG_20190624_123749.jpg')
+     .setThumbnail('https://cdn.discordapp.com/avatars/591951563023712257/5d7db60e7b05461c216a89d3ab24dbc6.png?size=2048')
 
    message.channel.send({embed});
  };
