@@ -17,6 +17,7 @@ exports.conf = {
   permLevel: 0,
   botPerms: [],
   requiredFuncs: [],
+    kategori: 'özel',
 };
 
 exports.help = {
