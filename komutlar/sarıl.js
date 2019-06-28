@@ -47,7 +47,8 @@ module.exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['anime','sarıl'],
-  permLevel: 0
+  permLevel: 0,
+    kategori: "ekstra",
 };
 
 module.exports.help = {

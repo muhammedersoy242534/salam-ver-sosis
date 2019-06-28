@@ -25,6 +25,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
+    kategori: "özel",
   permLevel: 0
 };
 
