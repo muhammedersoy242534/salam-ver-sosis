@@ -16,7 +16,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'yardım',
+  name: 'remix',
   description: 'Komut kategorilerini gösterir.',
   usage: 'yardım'
 };
