@@ -1,23 +1,23 @@
-const Discord = require("discord.js");
 
-exports.run = async (client, message, args, tools, con) => {
- 
-  let logsEmbed = new Discord.RichEmbed() 
-  .setColor("#e62828")
-  .setTimestamp()
-  .addField('= <BoşAmaHoş> Komutlar  =', `${client.commands.map(cmd => `\`${cmd.help.name}\``).join("\n ")}`)
-  message.channel.send(logsEmbed);
+const Discord = require('discord.js');
+
+exports.run = (client, message, args) => {
+  
+    
+let komutlar = client.commands.filter(a => a.conf.kategori === "özel").map(x => `${x.help.name}: ${x.help.description}`).join("\n")
+message.channel.send(`${komutlar}`, {split: true, 'code': 'html'})
 }
 exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 0
+  permLevel: 0,
+    kategori: "özel",
+ 
 };
 
 exports.help = {
   name: 'remix',
-  description: 'Komut kategorilerini gösterir.',
-  usage: 'yardım'
+  description: '',
+  usage: 'yazdır <@kullanıcı> <yazı>'
 };
- 
