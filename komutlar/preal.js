@@ -1,8 +1,8 @@
 let Discord = require('discord.js')
 exports.run = async(client, message) => {
 let premiummesaj = [
-  'Hey hesabın Hazır ,\n Reklamı Geçerek Ulaşabilirsin : `link` ',
-  'Hey hesabın Hazır ,\n Reklamı Geçerek Ulaşabilirsin : `linç`'
+  'Hey hesabın Hazır ,\n Reklamı Geçerek Ulaşabilirsin : `bot tutarsa yapılacak` ',
+  'Hey hesabın Hazır ,\n Reklamı Geçerek Ulaşabilirsin : `yakındaa`'
 ] 
         var random = Math.floor(Math.random()*(premiummesaj.length-0+1)+0);
         message.channel.send(new Discord.RichEmbed()
@@ -15,7 +15,8 @@ exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: [],
-  permLevel: 4
+  permLevel: 4,
+    kategori: "ekstra",
 };
 exports.help = {
   name: 'preal',

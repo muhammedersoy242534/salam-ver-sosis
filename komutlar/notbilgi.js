@@ -15,10 +15,11 @@ exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: [],
-  permLevel: 0
+  permLevel: 0,
+    kategori: "ekstra",
 };
 exports.help = {
   name: 'notbilgi',
-  description: 'RitararyCode Sunucusuna Aittir!',
+  description: 'aldığınız not hakında bilgi verir',
   usage: 'Izinsiz Paylaşmayın Aq'
 };

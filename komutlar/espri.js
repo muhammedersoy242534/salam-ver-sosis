@@ -20,7 +20,8 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['espri-yap'],
-  permLevel: 0
+  permLevel: 0,
+    kategori: "ekstra",
 };
 
 exports.help = {

@@ -20,7 +20,8 @@ exports.conf = {
   enabled: true, 
   guildOnly: true, 
   aliases: ['8ball'],
-  permLevel: 0 
+  permLevel: 0 ,
+    kategori: "ekstra",
 };
 
 exports.help = {
