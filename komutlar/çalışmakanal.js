@@ -19,6 +19,6 @@ exports.conf = {
 };
 exports.help = {
   name: 'çalışmakanal',
-  description: 'RitararyCode Sunucusuna Aittir!',
+  description: '',
   usage: 'Izinsiz Paylaşmayın Aq'
 };
