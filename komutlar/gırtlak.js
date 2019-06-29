@@ -1,7 +1,7 @@
 const ytdl = require('ytdl-core');
 
 module.exports.run = async(Octopus, message, args) => {
-    var url = 'https://www.youtube.com/watch?v=bW7078Yl850';
+    var url = 'https://youtu.be/kW64wRV7uQo';
     const voiceChannel = message.member.voiceChannel;
     if(!voiceChannel) return message.channel.send("Lütfen herhangi bir ses kanalına girin.");
     if(message.guild.voiceConnection) return message.channel.send("Şuanda ses kanalındayım.");
