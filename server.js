@@ -299,6 +299,32 @@ client.on("message", async msg => {
 });
   
   
+// Konuşma özelliği
+
+client.on("message", async message => {
+  if (message.author.bot) return
+  const x = new RegExp(`^<@!?${client.user.id}>`)
+if (message.content.match(x)[0]) {
+    const Cleverbot = require('cleverbot.io'),
+          bot       = new Cleverbot('yRT2w1GqlMtezdq9','RdmCkKfr0yfOTPMYS2CWpDysSSEWsENr');
+  
+    bot.setNick('Yapay Zeka');
+    let yazi = message.content.split(" ").slice(1).join(" ")
+    let komut = message.content.split(" ")[1]
+    if (!yazi) return
+    if (!client.commands.has(komut) && !client.aliases.has(komut)) {
+      let xy = await message.channel.send(`<a:ezz5:591244169188605963>**Cevap yükleniyor...**`)
+      bot.create(function (err, session) {
+        bot.ask(yazi, function (err, response) {
+          return xy.edit(response)
+        })
+      })
+    }
+}
+});
+
+// Konuşma özelliği bitiş
+
   
 ///////////////////KÜFÜR ENGELLEME/////////////////////
 client.on("message", async msg => {
