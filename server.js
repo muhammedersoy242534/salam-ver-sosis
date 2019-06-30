@@ -325,7 +325,7 @@ if (message.content.match(x)[0]) {
 
 // Konuşma özelliği bitiş
 
-  
+
 ///////////////////KÜFÜR ENGELLEME/////////////////////
 client.on("message", async msg => {
 db.fetch(`kufur_${msg.guild.id}`).then(i => {
