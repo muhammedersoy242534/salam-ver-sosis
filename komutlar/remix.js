@@ -10,7 +10,7 @@ message.channel.send(`${komutlar}`, {split: true, 'code': 'html'})
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['yardım'],
+  aliases: [],
   permLevel: 0,
     kategori: "özel",
  
