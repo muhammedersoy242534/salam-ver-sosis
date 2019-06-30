@@ -347,8 +347,6 @@ console.log(err);
 
 
 
-
-
 ////////////////////////EVERYONE ENGELLEME///////////////////
 client.on('message', message => {
 if (message.content.includes('@everone')) {
