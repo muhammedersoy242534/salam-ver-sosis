@@ -81,13 +81,13 @@ const radio = {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["radio"],
+    aliases: ["radido"],
     permLevel: 0,
     kategori:'kullanıcı'
 };
 
 exports.help = {
-    name : "radyo",
+    name : "radydo",
     kategori: "genel",
     usage: "radyo",
     description: "radyo"
