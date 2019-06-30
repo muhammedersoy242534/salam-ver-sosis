@@ -802,13 +802,12 @@ client.on('ready', msg => {
   let knl2 = client.channels.find(c => c.id === '594925693926768650'); // Ses Kanalı 2 İD
   let knl3 = client.channels.find(c => c.id === '594925720908595231'); // Ses Kanalı 3 İD
   let knl4 = client.channels.find(c => c.id === '594926325504933918');
-   let knl5 = client.channels.find(c => c.id === '');
   setInterval(() => {
 
     knl2.setName (client.users.array().length + ' - Kullanıcı', 'voice');
       knl3.setName(client.channels.size + ' - Kanal', 'voice');
         knl4.setName(client.guilds.size + ' - Sunucu', 'voice');
-
+ 
 
   },1 * 10000);
 });
