@@ -5,6 +5,7 @@ const ayarlar = require('../ayarlar.json');
 const db = require('quick.db')
 //şuna bak bari mk
 module.exports = async (message) => { 
+  
 db.fetch(`prefix_${message.guild.id}`).then(prefix => { 
 if(!prefix || prefix === null) prefix = ayarlar.prefix
 else prefix = prefix
