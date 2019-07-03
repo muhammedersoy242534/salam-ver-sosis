@@ -49,7 +49,8 @@
     "helmet": "^3.18.0",
     "marked": "^0.6.2",
     "ejs": "^2.6.2",
-    "dblapi.js": "^2.3.0"
+    "dblapi.js": "^2.3.0",
+    "snekfetch": "^4.0.4"
   },
   "engines": {
     "node": "8.x"

@@ -35,6 +35,7 @@ dependencies:
   quick-db: 1.0.5
   quick.db: 6.3.2
   simple-youtube-api: 5.1.1
+  snekfetch: 4.0.4
   superagent: 5.1.0
   tcmb-doviz: 1.0.5
   weather-js: 2.0.0
@@ -4263,6 +4264,7 @@ specifiers:
   quick-db: ^1.0.5
   quick.db: ^6.3.2
   simple-youtube-api: ^5.1.1
+  snekfetch: ^4.0.4
   superagent: ^5.1.0
   tcmb-doviz: ^1.0.5
   weather-js: ^2.0.0
