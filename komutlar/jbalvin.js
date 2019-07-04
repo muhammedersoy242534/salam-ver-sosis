@@ -1,7 +1,7 @@
 const ytdl = require('ytdl-core');
 
 module.exports.run = async(Octopus, message, args) => {
-    var url = 'https://www.youtube.com/watch?v=XB4GiprcWFc';
+    var url = 'https://www.youtube.com/watch?v=JS7yf5B5cbk';
     const voiceChannel = message.member.voiceChannel;
     if(!voiceChannel) return message.channel.send("Lütfen herhangi bir ses kanalına girin.");
     if(message.guild.voiceConnection) return message.channel.send("Şuanda ses kanalındayım.");
@@ -30,7 +30,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'balvin',
+  name: 'jbalvin',
   description: 'Acaba ne?',
   usage: 'earrape'
 };
