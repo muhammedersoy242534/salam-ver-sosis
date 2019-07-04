@@ -267,7 +267,78 @@ if (!channel.guild.channels.get(membermodChannel)) return console.log('Ses Kanal
 else channel.guild.channels.get(membermodChannel).send(embed) }
 
 });
+client.on('message', async (msg, member, guild) => {
 
+  let OC = await  db.fetch(`otocevap_${msg.guild.id}`)
+  if(OC === 'açık') {
+
+    const OtoCevapSelam = new Discord.RichEmbed()
+      .setColor('#000096')
+      .setDescription(`**Aleyküm Selam, Hoşgeldin ${msg.author.username}!**`)
+
+    if (msg.content.toLowerCase() === 'sa') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'slm') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'selam') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'sea') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'selamun aleyküm') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'selamın aleyküm') {
+      msg.channel.send(OtoCevapSelam).then(msg => msg.delete(3000))
+    }
+
+    const OtoCevapHalhatır = new Discord.RichEmbed()
+      .setColor('#000096')
+      .setDescription(`**İyiyiz, sen nassın ${msg.author.username}?**`)
+
+    if (msg.content.toLowerCase() === 'naber') {
+      msg.channel.send(OtoCevapHalhatır).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'nbr') {
+      msg.channel.send(OtoCevapHalhatır).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'nasılsınız') {
+      msg.channel.send(OtoCevapHalhatır).then(msg => msg.delete(3000))
+    }
+
+    const OtoCevapVeda = new Discord.RichEmbed()
+      .setColor('#000096')
+      .setDescription(`**Hoşçakal ${msg.author.username}!**`)
+
+    if (msg.content.toLowerCase() === 'görüşürüz') {
+      msg.channel.send(OtoCevapVeda).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'bb') {
+      msg.channel.send(OtoCevapVeda).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'bye') {
+      msg.channel.send(OtoCevapVeda).then(msg => msg.delete(3000))
+    }
+
+    if (msg.content.toLowerCase() === 'bye bye') {
+      msg.channel.send(OtoCevapVeda).then(msg => msg.delete(3000))
+    }
+
+  
+}})
+   
 client.on("message", async msg => {
 
 
