@@ -15,7 +15,8 @@ exports.conf = {
  enabled: true,
  guildOnly: false,
  aliases: ['trumpnotlari', 'trumpnotları', 'trump-notlari'],
- permLevel: 0
+ permLevel: 0,
+  kategori:'ekstra'
 }
 
 exports.help = {
