@@ -7,7 +7,7 @@ db.fetch(`notsayi_${message.author.id}`).then(notsayi => {
 db.fetch(`notlar_${message.author.id}`).then(yazı => {
 if(hangisi > notsayi) return message.channel.send("<a:iptal:590136777155543040> | Bu Sayıda Bir Notun Yok!")
   let annn = yazı[hangisi].split(notsayi - 1 + " - ").join("")
-  if(annn === undefined) return message.channel.send("<a:iptal:590136777155543040> | Bu Sayıda Bir Notun Yok! Lütfen **1** yerine **0** kullanmayı deneyin")
+  if(annn === undefined) return  message.channel.sendEmbed(new Discord.RichEmbed().setDescription("<a:iptal:590136777155543040> | Bu Sayıda Bir Notun Yok! Lütfen **1** yerine **0** kullanmayı deneyin").setColor("GREY"));
 message.channel.send("Not içeriği: **" + annn + "**")
   
 })})}
