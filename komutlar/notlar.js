@@ -4,7 +4,7 @@ const db = require('quick.db');
 exports.run = async (client, message, args) => {
 
 db.fetch(`notlar_${message.author.id}`).then(yazı => {
-if(!yazı) return message.channel.send('<a:iptal:590136777155543040> | Hiç notun yok')
+if(!yazı) return message.channel.sendEmbed(new Discord.RichEmbed().setDescription('Malesef Dostum Hiç Notun Yok!').setColor("GREY"));
 var annn = yazı.join(',\n')
   message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`Notların: \n**${annn}**`).setColor("GREY"));
 })}
