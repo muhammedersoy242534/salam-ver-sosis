@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
 db.fetch(`notlar_${message.author.id}`).then(yazı => {
 if(!yazı) return message.channel.send('<a:iptal:590136777155543040> | Hiç notun yok')
 var annn = yazı.join(',\n')
-message.channel.send(`Notların: \n**${annn}**`)
+message.channel.send(`Notların: ``n**${annn}**```)
   
 })}
 
