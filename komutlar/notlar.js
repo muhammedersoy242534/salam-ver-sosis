@@ -3,23 +3,24 @@ const db = require('quick.db');
 
 exports.run = async (client, message, args) => {
 
-var yazı = db.fetch(`notlar_${message.author.id}`)
-if(!yazı) return message.channel.send(':x: | Hiç notun yok')
+db.fetch(`notlar_${message.author.id}`).then(yazı => {
+if(!yazı) return message.channel.send('<a:iptal:590136777155543040> | Hiç notun yok')
 var annn = yazı.join(',\n')
 message.channel.send(`Notların: \n**${annn}**`)
   
-}
+})}
 
 
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['not'],
-  permLevel: 0
+  aliases: [],
+  permLevel: 0,
+    kategori: "ekstra",
 };
 
 exports.help = {
   name: 'notlar',
-  description: 'Ritar',
+  description: 'notlarınız',
   usage: 'Izinsiz Paylaşmayın Aq'
-};
+}
