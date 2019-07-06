@@ -357,7 +357,7 @@ message.delete()
 
 
 client.on('message', message => {
-if (message.content.includes('@her')) {
+if (message.content.includes('@herrr')) {
 message.reply("Lütfen **here** Kullanmayınız.!!")
 message.delete()
 }
