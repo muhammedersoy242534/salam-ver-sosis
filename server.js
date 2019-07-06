@@ -754,7 +754,7 @@ client.on('message', async msg => {
   }
 });
 
-client.login(ayarlar.token);
+
 
 client.on('message', async message => {
   
@@ -822,3 +822,4 @@ dbl.on('posted', () => {
 dbl.on('error', e => {
  console.log(`Oops! ${e}`);
 })
+client.login(ayarlar.token);

@@ -1,5 +1,5 @@
 const config = {
-  "token": "NTk0MTA2NjAzMDU4MjMzMzQ1.XRXnMA.L2vF-0J_ZsqRV87oIeMSt_rui_k",
+  "token": "NTk0MTA2NjAzMDU4MjMzMzQ1.XSDatQ.heseAqbaTvgGyaXRn_rGlaLABV0",
 
   "dashboard" : {
     "oauthSecret": "s4YTFQZJ3lnBZCrVjPPvxuC4scBos0LA", // This is the `client` secret in your bot application page.
