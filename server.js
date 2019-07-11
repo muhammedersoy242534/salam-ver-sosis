@@ -345,7 +345,65 @@ console.log(err);
 })
 });
 
+client.on("message", async message => {
+  let prefix = await require('quick.db').fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  
+  if(message.content === "!!lele") {
+ 
+      var id = message.author.id;
+      var gid = message.guild.id;
+      db.delete(`msgs_${id}_${gid}`);
+      db.delete(`xp_${id}_${gid}`);
+      db.delete(`lvl_${id}_${gid}`);
+      db.delete(`xpToLvl_${id}_${gid}`);
 
+    message.channel.send("başarılı")
+  }
+  
+  if(message.content.startsWith(prefix)) return;
+  if(message.author.bot) return;
+  
+  var id = message.author.id;
+  var gid = message.guild.id;
+  var msgs = await db.fetch(`msgs_${id}_${gid}`)
+  var xp = await db.fetch(`xp_${id}_${gid}`);
+  var lvl = await db.fetch(`lvl_${id}_${gid}`);
+  var xpToLvl = await db.fetch(`xpToLvl_${id}_${gid}`);
+  
+  db.add(`msgs_${id}_${gid}`, 1);
+  
+  if(!lvl) {
+    
+    db.set(`xp_${id}_${gid}`, 5);
+    db.set(`lvl_${id}_${gid}`, 1);
+    db.set(`xpToLvl_${id}_${gid}`, 100);
+    
+  } else {
+    
+    var random = Math.random() * (5 - 2) + 2;
+    db.add(`xp_${id}_${gid}`, random.toFixed());
+    
+    if(xp > xpToLvl) {
+      
+      db.add(`lvl_${id}_${gid}`, 1);
+      db.add(`xpToLvl_${id}_${gid}`, await db.fetch(`lvl_${id}_${gid}`) * 100);      
+      var lvl = await db.fetch(`lvl_${id}_${gid}`);
+      message.channel.send(" | Tebrikler " + message.author + ", seviye atladın! Yeni seviyen: **" + lvl + "**");
+      var role = message.guild.roles.get(await db.fetch(`role_${gid}_${lvl}lvl`));
+      if(!role) return
+      else {
+        message.member.addRole(role);
+        message.channel.send(" | Tebrikler " + message.author + ", **" + lvl + "** seviyeye gelerek, **@" + role.name + "** ödülünü kazandın.")
+      } 
+      
+    }
+    
+  }
+  
+  
+  
+});
+   
 
 ////////////////////////EVERYONE ENGELLEME///////////////////
 client.on('message', message => {
