@@ -16,11 +16,10 @@ exports.run = async (client, message) => {
   
   var embed = new Discord.RichEmbed()
     .setAuthor(user.tag, user.avatarURL)
-    .setColor(client.color)
-    .setDescription(client.progress(percent, 30) + " " + percent + "%")
+    .setColor("RANDOM")
+    .setDescription((percent, 30) + " " + percent + "%")
     .addField("Seviye: ", lvl ? lvl : "0")
     .addField("XP: ", xp ? xp : "0", true)
-    .addField("Sunucuda Gönderilen Mesaj Sayısı: ", msgs ? msgs : "0", true)
     .setFooter(`Seviye atlamaya kalan son ${xp ? xpToLvl - xp : "0"} XP`)
   message.channel.send(embed);
   
