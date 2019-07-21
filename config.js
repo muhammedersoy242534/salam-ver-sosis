@@ -1,8 +1,8 @@
 const config = {
-  "token": "NTk0MTA2NjAzMDU4MjMzMzQ1.XSIOUw.w7b8F-Tbo1JnuRZztZDfp6j73Y0",
+  "token": "NjAyNDcyODYzNzA1OTg5MTIx.XTRWug.CyNqjQ2k_gCDJE8FqPMh8K10-08",
 
   "dashboard" : {
-    "oauthSecret": "s4YTFQZJ3lnBZCrVjPPvxuC4scBos0LA", // This is the `client` secret in your bot application page.
+    "oauthSecret": "XBx8HtswD6B-wmJAETvRx3vEYIJUepoF", // This is the `client` secret in your bot application page.
     "callbackURL": "https://saitokontrol.glitch.me/callback",
     "sessionSecret": "super-secret-session-thing",
     "domain": "https://saitokontrol.glitch.me",
