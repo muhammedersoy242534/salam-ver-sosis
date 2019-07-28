@@ -1,5 +1,6 @@
+const ayarlar = require('./ayarlar.json')
 const config = {
-  "token": "NjAyNDcyODYzNzA1OTg5MTIx.XTRWug.CyNqjQ2k_gCDJE8FqPMh8K10-08",
+  "token": ayarlar.token,
 
   "dashboard" : {
     "oauthSecret": "XBx8HtswD6B-wmJAETvRx3vEYIJUepoF", // This is the `client` secret in your bot application page.
