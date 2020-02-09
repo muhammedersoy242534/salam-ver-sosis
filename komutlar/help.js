@@ -10,9 +10,7 @@ exports.run = async (client, message, params) => {
 
 ${prefix}eğlence        ::  Eğlence komutlarını gösterir.
 ${prefix}kullanıcı      ::  Kullanıcı komutlarını gösterir.
-${prefix}yetkili        ::  Yetkili komutlarını gösterir.
-${prefix}ekstra         ::  Ekstra komutları gösterir.
-${prefix}müzik          ::  Müzik komutlarını gösterir.
+${prefix}yetkili        ::  Yetkili komutlarını gösterir
 
 # Komutlar hakkında yardım almak icin ${prefix}yardım <komut ismi>`);
   } else {
