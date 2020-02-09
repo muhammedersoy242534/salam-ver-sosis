@@ -4,9 +4,9 @@ const config = {
 
   "dashboard" : {
     "oauthSecret": "XBx8HtswD6B-wmJAETvRx3vEYIJUepoF", // This is the `client` secret in your bot application page.
-    "callbackURL": "https://saitokontrol.glitch.me/callback",
+    "callbackURL": "https://fretch.glitch.me/callback",
     "sessionSecret": "super-secret-session-thing",
-    "domain": "https://saitokontrol.glitch.me",
+    "domain": "https://fretch.glitch.me",
     "port": 8000
   },
 };

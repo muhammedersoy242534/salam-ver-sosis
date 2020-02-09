@@ -850,4 +850,11 @@ dbl.on('posted', () => {
 dbl.on('error', e => {
  console.log(`Oops! ${e}`);
 })
+
+
+
+
+
+
+
 client.login(ayarlar.token);
