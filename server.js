@@ -826,19 +826,8 @@ client.on("message",message => {
       message.delete(5000)
     }
 })})
-client.on('ready', msg => {
-  let knl2 = client.channels.find(c => c.id === '594925693926768650'); // Ses Kanalı 2 İD
-  let knl3 = client.channels.find(c => c.id === '594925720908595231'); // Ses Kanalı 3 İD
-  let knl4 = client.channels.find(c => c.id === '594926325504933918');
-  setInterval(() => {
 
-    knl2.setName (client.users.array().length + ' - Kullanıcı', 'voice');
-      knl3.setName(client.channels.size + ' - Kanal', 'voice');
-        knl4.setName(client.guilds.size + ' - Sunucu', 'voice');
- 
 
-  },1 * 10000);
-});
 const DBL = require("dblapi.js");
 const dbl = new DBL('dbl client id', client);
 
