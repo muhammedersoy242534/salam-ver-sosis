@@ -99,8 +99,8 @@ exports.run = (bot, message, params) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['h', 'help', 'y'],
-  permLevel: `Yetki gerekmiyor.`
+  aliases: ['h', 'help', 'yardım', 'y'],
+  permLevel: 0 //yetki gerekmiyor
 };
 
 exports.help = {
