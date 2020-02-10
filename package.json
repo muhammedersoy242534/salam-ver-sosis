@@ -1,6 +1,6 @@
 {
   "//1": "Bu altyapı ADLMedia tarafından yeniden editlenmiştir ",
-  "//2": "https://docs.npmjs.com/files/package.json",
+  "//2": "Hiçbir modülü güncellemeyin sorun yaratacaktır! ",
   "//3": "updating this file will download and update your packages",
   "name": "hello-express",
   "version": "0.0.1",
