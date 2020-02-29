@@ -37,4 +37,5 @@ bot.commands.forEach((command) => {
       <% } %>
     </div>
   <% } %>
-<% include ./blocks/footer %>
+
+<%- include('blocks/footer', {bot, user, path}) %>
